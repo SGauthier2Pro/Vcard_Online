@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import RegexValidator
-
-from .address import Address
+from django.core.validators import RegexValidator, MaxValueValidator, MinLengthValidator
+from django_countries.fields import CountryField
 
 
 class CustomUser(AbstractUser):
@@ -40,11 +39,42 @@ class CustomUser(AbstractUser):
         blank=True,
         null=True
     )
-    location = models.OneToOneField(
-        Address,
-        on_delete=models.CASCADE,
+    number = models.PositiveIntegerField(
+        validators=[MaxValueValidator(9999)],
         blank=True,
-        null=True
+        null=True,
+        verbose_name='Street number'
+    )
+    street = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name='Street name'
+    )
+    city = models.CharField(
+        max_length=64,
+        blank=True,
+        null=True,
+        verbose_name='City'
+    )
+    state = models.CharField(
+        max_length=2,
+        validators=[MinLengthValidator(2)],
+        blank=True,
+        null=True,
+        verbose_name='State'
+    )
+    zip_code = models.PositiveIntegerField(
+        validators=[MaxValueValidator(99999)],
+        blank=True,
+        null=True,
+        verbose_name='Zip code'
+    )
+    country = CountryField(
+        blank_label="(select country)",
+        blank=True,
+        null=True,
+        verbose_name='Country'
     )
     linkedin_url = models.URLField(
         max_length=200,

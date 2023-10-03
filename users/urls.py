@@ -3,7 +3,7 @@ from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
 
 from users.views.signup_page import signup_page
-from users.views.upload_profile_photo import upload_profile_photo
+from users.views.edit_profile import edit_profile
 
 
 app_name = 'users'
@@ -22,6 +22,6 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', signup_page, name='signup'),
-    path('profile-photo/upload', upload_profile_photo,
-         name='upload_profile_photo'),
+    path('edit-profile/', edit_profile,
+         name='edit_profile'),
 ]
