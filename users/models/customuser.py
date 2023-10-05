@@ -83,7 +83,7 @@ class CustomUser(AbstractUser):
     )
 
     profile_photo = models.ImageField(
-        verbose_name='photo de profil',
+        verbose_name='photo de profile',
         default='default_profile.png'
     )
 
