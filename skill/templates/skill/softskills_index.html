@@ -1,25 +1,25 @@
 {% extends 'index.html' %}
 {% block content %}
     <div class="text-center">
-        <h2>Technologies</h2>
+        <h2>Softskills</h2>
     </div>
-    {% for instance in technologies %}
+    {% for instance in softskills %}
         <div class="ticket border border-secondary m-4 p-2 row">
             <div class="align-self-center col-sm-6">
-                {% include 'skill/partials/technology_snippet.html' with technology=instance %}
+                {% include 'skill/partials/softskill_snippet.html' with softskill=instance %}
             </div>
             <div class="text-end col-sm-6">
-                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:edit_technology' instance.id %}">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:edit_softskill' instance.id %}">
                     🖉
                 </a>
-                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:delete_technology' instance.id %}">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:delete_softskill' instance.id %}">
                     X
                 </a>
             </div>
         </div>
     {% endfor %}
     <div class="text-end">
-        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:create_technology' %}">
+        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:create_softskill' %}">
             Ajouter...
         </a>
     </div>

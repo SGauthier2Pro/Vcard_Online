@@ -1,9 +1,9 @@
 {% extends 'index.html' %}
 {% block content %}
-    {% if technology.user == request.user %}
-        <h2 class="text-center mb-4">Supprimer votre Technologie ?</h2>
+    {% if language.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre Langue ?</h2>
         <div class="review border border-secondary m-4 p-2">
-            {% include 'skill/partials/technology_snippet.html' with technology_id=technology %}
+            {% include 'skill/partials/language_snippet.html' with language_id=language %}
         </div>
         <form method="post">
             {{ delete_form }}

@@ -13,6 +13,10 @@ class SoftSkillForm(forms.ModelForm):
 
     class Meta:
         model = SoftSkill
+        fields = [
+            'title',
+            'level'
+        ]
 
 
 class DeleteSoftSkillForm(forms.Form):

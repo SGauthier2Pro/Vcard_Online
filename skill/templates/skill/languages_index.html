@@ -1,25 +1,25 @@
 {% extends 'index.html' %}
 {% block content %}
     <div class="text-center">
-        <h2>Technologies</h2>
+        <h2>Langues</h2>
     </div>
-    {% for instance in technologies %}
+    {% for instance in languages %}
         <div class="ticket border border-secondary m-4 p-2 row">
             <div class="align-self-center col-sm-6">
-                {% include 'skill/partials/technology_snippet.html' with technology=instance %}
+                {% include 'skill/partials/language_snippet.html' with language=instance %}
             </div>
             <div class="text-end col-sm-6">
-                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:edit_technology' instance.id %}">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:edit_language' instance.id %}">
                     🖉
                 </a>
-                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:delete_technology' instance.id %}">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:delete_language' instance.id %}">
                     X
                 </a>
             </div>
         </div>
     {% endfor %}
     <div class="text-end">
-        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:create_technology' %}">
+        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:create_language' %}">
             Ajouter...
         </a>
     </div>

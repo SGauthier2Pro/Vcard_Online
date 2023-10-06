@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from project.models.project import Project
 from cv.models.cv import Cv
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class SoftSkill(models.Model):
@@ -13,17 +14,18 @@ class SoftSkill(models.Model):
         null=False
     )
 
-    description = models.CharField(
-        max_length=255,
-        blank=True,
-        null=True
-    )
+    level = models.PositiveIntegerField(validators=[MinValueValidator(0),
+                                                    MaxValueValidator(5)],
+                                        default=0,
+                                        verbose_name='Level')
 
     projects = models.ManyToManyField(
         Project
     )
 
-    cvs = models.ManyToManyField(Cv)
+    cvs = models.ManyToManyField(
+        Cv
+    )
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,

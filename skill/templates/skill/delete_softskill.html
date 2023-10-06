@@ -1,9 +1,9 @@
 {% extends 'index.html' %}
 {% block content %}
-    {% if technology.user == request.user %}
-        <h2 class="text-center mb-4">Supprimer votre Technologie ?</h2>
+    {% if softskill.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre Softskill ?</h2>
         <div class="review border border-secondary m-4 p-2">
-            {% include 'skill/partials/technology_snippet.html' with technology_id=technology %}
+            {% include 'skill/partials/softskill_snippet.html' with softskill_id=softskill %}
         </div>
         <form method="post">
             {{ delete_form }}

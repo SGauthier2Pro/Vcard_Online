@@ -13,6 +13,10 @@ class LanguageForm(forms.ModelForm):
 
     class Meta:
         model = Language
+        fields = [
+            'title',
+            'level'
+        ]
 
 
 class DeleteLanguageForm(forms.Form):

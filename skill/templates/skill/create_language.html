@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter une Langue</h2>
+
+    <div class="d-flex flex-column mb-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ language_form.edit_language }}
+            <label class="ms-3" for="{{ language_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ language_form.title}}
+            </div>
+            <label class="ms-3" for="{{ language_form.level.id }}">Level</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ language_form.level}}
+            </div>
+            {% include 'skill/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

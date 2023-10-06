@@ -13,8 +13,7 @@ class Technology(models.Model):
         null=False
     )
 
-    level = models.PositiveIntegerField(max_length=1024,
-                                        validators=[MinValueValidator(0),
+    level = models.PositiveIntegerField(validators=[MinValueValidator(0),
                                                     MaxValueValidator(5)],
                                         default=0,
                                         verbose_name='Level')
