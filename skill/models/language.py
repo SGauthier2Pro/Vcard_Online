@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from cv.models.cv import Cv
 
 
@@ -28,7 +29,11 @@ class Language(models.Model):
         default='A1'
     )
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True,
+                             on_delete=models.CASCADE)
+
     cvs = models.ManyToManyField(Cv)
 
     def __str__(self):
-        return self.title
+        return f"{self.title}: {self.level}"

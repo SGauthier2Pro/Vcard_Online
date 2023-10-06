@@ -30,7 +30,7 @@ urlpatterns = [
     path(r'users/', include('users.urls', namespace='users')),
     # path(r'project/', include('project.url', namespace='project')),
     # path(r'cv/', include('cv.urls', namespace='cv')),
-    # path(r'skill/', include('skill.urls', namespace='skill')),
+    path(r'skill/', include('skill.urls', namespace='skill')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]

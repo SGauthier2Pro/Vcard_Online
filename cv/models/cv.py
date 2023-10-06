@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Cv(models.Model):
@@ -29,6 +30,10 @@ class Cv(models.Model):
         verbose_name='background grade title'
 
     )
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True,
+                             on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

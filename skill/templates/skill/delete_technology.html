@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% if technology.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre Technologie ?</h2>
+        <div class="review border border-secondary m-4 p-2 bg-white">
+            {% include 'skill/partials/technology_snippet.html' with technology_id=technology %}
+        </div>
+        <form method="post">
+            {{ delete_form }}
+            {% csrf_token %}
+            {% include 'skill/partials/validation_buttons_snippet.html' with word='Supprimer'%}
+        </form>
+    {% else %}
+        {% include 'skill/access_denied.html' %}
+    {% endif %}
+{% endblock content %}

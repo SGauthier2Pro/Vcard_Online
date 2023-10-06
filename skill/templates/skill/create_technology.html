@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter une Technologie</h2>
+
+    <div class="d-flex flex-column mb-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ technology_form.edit_technology }}
+            <label class="ms-3" for="{{ technology_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ technology_form.title}}
+            </div>
+            <label class="ms-3" for="{{ technology_form.level.id }}">Level</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ technology_form.level}}
+            </div>
+            {% include 'skill/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

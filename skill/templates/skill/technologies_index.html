@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class="text-center">
+        <h2>Technologies</h2>
+    </div>
+    {% for instance in technologies %}
+        <div class="ticket border border-secondary m-4 p-2">
+           {% include 'skill/partials/technology_snippet.html' with technology=instance %}
+            <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:edit_technology' instance.id %}">
+                🖉
+            </a>
+            <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:delete_technology' instance.id %}">
+                X
+            </a>
+        </div>
+    {% endfor %}
+    <div class="text-end">
+        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:create_technology' %}">
+            Créer une technology
+        </a>
+    </div>
+{% endblock content %}
