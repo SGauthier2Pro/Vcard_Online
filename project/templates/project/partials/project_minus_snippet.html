@@ -1,0 +1,17 @@
+{% load static %}
+<div class="proj-prev__image">
+    <img src="{% static 'img/photography_1280w.jpg' %}" srcset="
+        {% static 'img/photography_3000w.jpg' %} 3000w,
+        {% static 'img/photography_1920w.jpg' %} 1920w,
+        {% static 'img/photography_0864w.jpg' %} 864w,
+        {% static 'img/photography_0640w.jpg' %} 640w,
+        {% static 'img/photography_0640w.jpg' %} 640w,
+        {% static 'img/photography_0420w.jpg' %} 420w
+    " alt="project title goes here">
+</div>
+<h1 class="proj-prev__heading">
+    {{ project.title }}
+</h1>
+<p class="proj-prev__byline">
+    {{ project.description }}
+</p>

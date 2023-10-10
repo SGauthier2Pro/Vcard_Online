@@ -3,4 +3,3 @@ from project.models.project import Project
 
 
 admin.site.register(Project)
-

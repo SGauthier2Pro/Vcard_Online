@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path(r'users/', include('users.urls', namespace='users')),
-    # path(r'project/', include('project.url', namespace='project')),
+    path(r'project/', include('project.urls', namespace='project')),
     # path(r'cv/', include('cv.urls', namespace='cv')),
     path(r'skill/', include('skill.urls', namespace='skill')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),

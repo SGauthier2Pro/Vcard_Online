@@ -1,0 +1,49 @@
+{% load static %}
+{% load post_extras %}
+<main class="project">
+    <div class="project__image">
+            <img src="{% static 'img/photography_1280w.jpg' %}" srcset="
+        {% static 'img/photography_3000w.jpg' %} 3000w,
+        {% static 'img/photography_1920w.jpg' %} 1920w,
+        {% static 'img/photography_0864w.jpg' %} 864w,
+        {% static 'img/photography_0640w.jpg' %} 640w,
+        {% static 'img/photography_0640w.jpg' %} 640w,
+        {% static 'img/photography_0420w.jpg' %} 420w
+        " alt="project title goes here" >
+    </div>
+    <div class="project__tags">
+        <p><strong>SoftSkills:</strong></p>
+            <ul>
+            {% for softskill in project.softskills.all %}
+            <li>{{ softskill.title }}</li>
+            {% endfor %}
+            </ul>
+
+        <p><strong>Technologies:</strong></p>
+            <ul>
+            {% for technology in project.technologies.all %}
+                <li>{{ technology.title }}</li>
+            {% endfor %}
+            </ul>
+
+    </div>
+
+    <div class="project__synopsis">
+        <h1 class="project__heading">
+            {{project.title}}
+        </h1>
+        <p class="project__copy">
+            {{project.description}}
+        </p>
+        <p>
+            <strong>Début:</strong> {{project.date_started|get_posted_at_display}}
+            <strong>Fin:</strong> {{project.date_end|get_posted_at_display}}
+        </p>
+        <p>
+            <strong>Compétences requises :</strong>
+            {{project.tasks}}
+        </p>
+    </div>
+    <a class="btn btn-secondary mb-4 me-2"  href="{{project.link_git}}">Checkout the code on Github</a>
+    <a class="btn btn-secondary mb-4 me-4"  href="{{project.presentation_file.url}}">Download presentation</a>
+</main>

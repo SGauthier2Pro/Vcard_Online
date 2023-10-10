@@ -27,6 +27,7 @@
             <ul>
                 <li class="nav__link nav__link--active">work</li>
                 <li class="nav__link"> <a href="{% url 'skill:skill_home' %}">Skills</a> </li>
+                <li class="nav__link"> <a href="{% url 'project:project_home' %}">Projects</a> </li>
                 <li class="nav__link"> <a href="./about.html">about</a> </li>
                 <li class="nav__link"> <a href="./contact.html">contact</a> </li>
                 <li class="nav__link"> <a href="{% url 'users:edit_profile' %}">Profile</a> </li>
@@ -52,8 +53,8 @@
     </header>
 
     <section class="quote">
-        "We are the <strong>music makers,</strong>
-        <br/> and we are the <strong>dreamers of dreams."</strong>
+        "<strong> Faites quelque chose,</strong> et si ça ne fonctionne pas,
+        <br/><strong>  essayez autre chose. "</strong>
     </section>
     <section class="container">
         {% block content %}{% endblock content %}

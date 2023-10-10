@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 
+from skill.models.technology import Technology
+from skill.models.softskill import SoftSkill
+
 
 class Project(models.Model):
 
@@ -30,6 +33,10 @@ class Project(models.Model):
         blank=True,
         null=True
     )
+
+    technologies = models.ManyToManyField(Technology, blank=True)
+
+    softskills = models.ManyToManyField(SoftSkill, blank=True)
 
     tasks = models.TextField(
         max_length=255,

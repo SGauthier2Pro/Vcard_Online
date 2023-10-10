@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter un Projet</h2>
+
+
+
+    <div class="d-flex flex-column mb-4 col-sm-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ project_form.edit_project }}
+            <label class="ms-3" for="{{ project_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.title}}
+            </div>
+            <label class="ms-3" for="{{ project_form.description.id }}">Description</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.description}}
+            </div>
+            <label class="ms-3" for="{{ project_form.date_started.id }}">Date début</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.date_started}}
+            </div>
+            <label class="ms-3" for="{{ project_form.date_end.id }}">Date fin</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.date_end}}
+            </div>
+            <label class="ms-3" for="{{ project_form.tasks.id }}">Tâches</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.tasks}}
+            </div>
+            <label class="ms-3" for="{{ project_form.technologies.id }}">Technologies</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.technologies}}
+            </div>
+            <label class="ms-3" for="{{ project_form.softskills.id }}">Softskills</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.softskills}}
+            </div>
+            <label class="ms-3" for="{{ project_form.link_git.id }}">Lien Github</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.link_git}}
+            </div>
+            <label class="ms-3" for="{{ project_form.presentation_file.id }}">Lien présentation</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.presentation_file}}
+            </div>
+            {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

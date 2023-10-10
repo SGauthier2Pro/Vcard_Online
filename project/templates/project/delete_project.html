@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% if project.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre Softskill ?</h2>
+        <div class="review border border-secondary m-4 p-2">
+            {% include 'project/partials/project_minus_snippet.html' with project_id=project %}
+        </div>
+        <form method="post">
+            {{ delete_form }}
+            {% csrf_token %}
+            {% include 'project/partials/validation_buttons_snippet.html' with word='Supprimer'%}
+        </form>
+    {% else %}
+        {% include 'project/access_denied.html' %}
+    {% endif %}
+{% endblock content %}
