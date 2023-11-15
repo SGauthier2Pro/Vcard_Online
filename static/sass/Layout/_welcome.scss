@@ -1,0 +1,26 @@
+/* Welcome */
+
+.welcome {
+    color: $colour-white;
+    text-align: center;
+    font-size: 5rem;
+    @include mobile-and-tablet() {
+        font-size: 4rem;
+    }
+    @include mobile-only() {
+        font-size: 3rem;
+    }
+    font-weight: 600;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

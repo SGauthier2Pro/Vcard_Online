@@ -1,0 +1,51 @@
+/* cv-prev */
+
+.cv-prev {
+  display: flex;
+  color: $colour-black;
+  margin-bottom: 1.5rem;
+  border: 0.1rem solid $colour-white;
+  &__image {
+    margin: 1;
+    opacity: 1;
+    width: 75px;
+    height: 100px;
+    @include mobile-only() {
+        width: 50px;
+        height: 75px;
+    }
+    display: block;
+    overflow: hidden;
+    padding-top: 10%;
+    position: relative;
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__heading {
+    font-size: 4rem;
+    padding-left: 1.5rem;
+    margin: auto;
+    line-height: 6rem;
+  }
+  &__button {
+    display: flex;
+    flex: row;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    & > .proj-prev__heading {
+      background: $colour-btn-background-hover;
+    }
+    & > .proj-prev__image {
+      opacity: 1;
+    }
+  }
+}

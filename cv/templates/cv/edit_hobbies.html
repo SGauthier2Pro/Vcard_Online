@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    {% if hobbies.user == request.user %}
+        <h2 class="text-center mb-4">Modifier votre Centre d'Intérêt</h2>
+
+        <div class="d-block p-2">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.edit_hobbies }}
+                <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.title}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.description}}
+                </div>
+                {% include 'cv/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+            </form>
+        </div>
+    {% else %}
+        {% include 'cv/access_denied.html' %}
+    {% endif %}
+{% endblock content %}

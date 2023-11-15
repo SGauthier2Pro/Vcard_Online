@@ -3,7 +3,7 @@ from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
 
 from users.views.signup_page import signup_page
-from users.views.edit_profile import edit_profile
+from users.views import edit_profile
 
 
 app_name = 'users'
@@ -22,6 +22,9 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', signup_page, name='signup'),
-    path('edit-profile/', edit_profile,
+    path('edit-profile/', edit_profile.edit_profile,
          name='edit_profile'),
+    path('profile/', edit_profile.index, name='profile_home'),
+    path('generate-guest-access/', edit_profile.generate_guest_access_code,
+         name='generate_guest_access_code'),
 ]

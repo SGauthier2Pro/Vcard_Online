@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter une Experience Professionnelle</h2>
+
+
+
+    <div class="d-flex flex-column mb-4 col-sm-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ experience_form.edit_experience }}
+            <label class="ms-3" for="{{ experience_form.title.id }}">Intitulé du Poste</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.title}}
+            </div>
+            <label class="ms-3" for="{{ experience_form.company_name.id }}">Nom de la Société</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.company_name}}
+            </div>
+            <label class="ms-3" for="{{ experience_form.location.id }}">Lieu / Ville</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.location}}
+            </div>
+            <label class="ms-3" for="{{ experience_form.date_started.id }}">Date début</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.date_started}}
+            </div>
+            <label class="ms-3" for="{{ experience_form.date_end.id }}">Date fin</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.date_end}}
+            </div>
+            <label class="ms-3" for="{{ experience_form.tasks.id }}">Tâches / Descriptif du Poste</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ experience_form.tasks}}
+            </div>
+            {% include 'cv/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

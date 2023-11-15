@@ -1,0 +1,8 @@
+{% load cv_extras %}
+<div class="formation_title">
+    <h2>{{formation.title}}, {{formation.rncp_level}}</h2>
+</div>
+<div class="school_time_info">
+    {{formation.school_name}},{{formation.location}} | {{formation.date_started|get_year_date}} - {{formation.date_end|get_year_date}}
+</div>
+<br>

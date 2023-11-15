@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from cv.models.cv import Cv
 
 
 LEVEL = (
@@ -32,8 +31,6 @@ class Language(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,
                              on_delete=models.CASCADE)
-
-    cvs = models.ManyToManyField(Cv)
 
     def __str__(self):
         return f"{self.title}: {self.level}"

@@ -1,0 +1,33 @@
+/* button */
+
+button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 2.75rem;
+}
+
+.btn {
+  padding: 1rem;
+  border: 0.1rem solid $colour-btn-background-hover;
+  color: $colour-white;
+  font-size: 15px;
+  @include mobile-only() {
+    font-size: 12px;
+  }
+  font-weight: 900;
+  background: $colour-background;
+  background: $gradient-btn-background;
+  cursor: pointer;
+  transition:
+    color 1s,
+    background 1s;
+  &:hover {
+    background: $colour-btn-background-hover;
+    color: $color-btn-hover;
+  }
+  &--full-width {
+    width: 100%;
+    margin: 5px;
+  }
+}

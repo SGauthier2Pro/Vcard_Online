@@ -44,6 +44,14 @@
             <div class="ms-4 mb-3 p-2">
                 {{ project_form.presentation_file}}
             </div>
+            <label class="ms-3" for="{{ project_form.image.id }}">Illustration</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.image}}
+            </div>
+            <label class="ms-3" for="{{ project_form.documents.id }}">Documents</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ project_form.documents}}
+            </div>
             {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
         </form>
     </div>

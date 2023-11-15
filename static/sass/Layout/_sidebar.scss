@@ -1,0 +1,12 @@
+/* sidebar */
+
+.sidebar {
+    background: $colour-background;
+    justify-content: center;
+    top: 10rem;
+    @include mobile-only() {
+        top: 8rem;
+    }
+    position: fixed;
+    z-index: 2;
+}

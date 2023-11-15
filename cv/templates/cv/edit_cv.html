@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    {% if cv.user == request.user %}
+        <h2 class="text-center mb-4">Modifier votre Cv</h2>
+
+        <div class="d-block p-2">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.edit_cv }}
+                <label class="ms-3" for="{{ edit_form.title.id }}">Intitulé du Poste / Stage</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.title}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.profil.id }}"> Descritpif du Profil</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.profil}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.experiences.id }}">Expériences à inclure</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.experiences}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.softskills.id }}">Compétences à mettre en avant</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.softskills}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.technologies.id }}">Technologies à mettre en avant</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.technologies}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.languages.id }}">Langues Connues</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.languages}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.formations.id }}">Formations et Diplomes</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.formations}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.hobbies.id }}">Centre d'Intérêts</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.hobbies}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.can_be_display.id }}">Rendre Accessible ?</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.can_be_display}}
+                </div>
+                {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+            </form>
+        </div>
+    {% else %}
+        {% include 'project/access_denied.html' %}
+    {% endif %}
+{% endblock content %}

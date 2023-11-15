@@ -19,17 +19,16 @@ from django.urls import path, include, re_path
 from django.views.static import serve
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import (
-    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
-from users.forms.userloginform import UserLoginForm
 from .views.index import index
+from .views.index_invited import access_code
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('access-code/', access_code, name='access_code'),
     path(r'users/', include('users.urls', namespace='users')),
     path(r'project/', include('project.urls', namespace='project')),
-    # path(r'cv/', include('cv.urls', namespace='cv')),
+    path(r'cv/', include('cv.urls', namespace='cv')),
     path(r'skill/', include('skill.urls', namespace='skill')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),

@@ -8,41 +8,49 @@
                 {% csrf_token %}
                 {{ edit_form.edit_project }}
                 <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.title}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.description}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.date_started.id }}">Date début</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.date_started}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.date_end.id }}">Date fin</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.date_end}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.tasks.id }}">Tâches</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.tasks}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.technologies.id }}">Technologies</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.technologies}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.softskills.id }}">Softskills</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.softskills}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.link_git.id }}">Lien Github</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.link_git}}
-            </div>
-            <label class="ms-3" for="{{ edit_form.presentation_file.id }}">Lien présentation</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ edit_form.presentation_file}}
-            </div>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.title}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.description}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.date_started.id }}">Date début</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.date_started}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.date_end.id }}">Date fin</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.date_end}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.tasks.id }}">Tâches</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.tasks}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.technologies.id }}">Technologies</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.technologies}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.softskills.id }}">Softskills</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.softskills}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.link_git.id }}">Lien Github</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.link_git}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.presentation_file.id }}">Lien présentation</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.presentation_file}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.image.id }}">Illustration</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.image}}
+                </div>
+                <label class="ms-3" for="{{ edit_form.documents.id }}">Documents</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.documents}}
+                </div>
                 {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
             </form>
         </div>

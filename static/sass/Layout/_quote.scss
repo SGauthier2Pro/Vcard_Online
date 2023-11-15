@@ -1,0 +1,19 @@
+/* quote */
+
+.quote {
+  justify-content: center;
+  font-size: 3rem;
+  @include mobile-and-tablet() {
+    font-size: 2.4rem;
+  }
+  @include mobile-only() {
+    display: none;
+  }
+  font-weight: 900;
+  font-style: italic;
+  color: color-btn-hover;
+  margin: 2rem 6rem -3rem 6rem;
+  & strong {
+    color: $colour-btn-background-hover;
+  }
+}

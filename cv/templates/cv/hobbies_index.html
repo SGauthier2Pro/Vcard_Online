@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <div class="text-center">
+        <h2>Centres d'Intérêt</h2>
+    </div>
+    {% for instance in hobbies %}
+        <div class="ticket border border-secondary m-4 p-2 row">
+            <div class="align-self-center col-sm-6">
+                {% include 'cv/partials/hobbies_snippet.html' with hobbies=instance %}
+            </div>
+            <div class="text-end col-sm-6">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:edit_hobbies' instance.id %}">
+                    🖉
+                </a>
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:delete_hobbies' instance.id %}">
+                    X
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="text-end">
+        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:create_hobbies' %}">
+            Ajouter...
+        </a>
+    </div>
+{% endblock content %}

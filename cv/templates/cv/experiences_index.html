@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <div class="text-center">
+        <h2>Experiences</h2>
+    </div>
+    {% for instance in experiences %}
+        <div class="ticket border border-secondary m-4 p-2 row">
+            <div class="align-self-center col-sm-6">
+                {% include 'cv/partials/experience_minus_snippet.html' with experience=instance %}
+            </div>
+            <div class="text-end col-sm-6">
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:edit_experience' instance.id %}">
+                    🖉
+                </a>
+                <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:delete_experience' instance.id %}">
+                    X
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="text-end">
+        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:create_experience' %}">
+            Ajouter...
+        </a>
+    </div>
+{% endblock content %}

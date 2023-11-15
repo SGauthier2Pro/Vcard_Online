@@ -1,0 +1,33 @@
+{% load static %}
+{% load users_extras %}
+<main class="cv row">
+    <div class="cv-info bg-light border-0 p-0">
+        <div class="text-center">
+            <h3>Photo</h3>
+            <img class="rounded-circle m-5" src="{{ user.profile_photo.url }}">
+        </div>
+        <div class="pt-5">
+            <div class="identité p-2">
+                <h2>Identité</h2>
+                <hr>
+                Prénom : {{user.first_name}} Nom: {{user.last_name}}<br>
+                Date de naissance : {{user.birth_date}}
+                <br>
+                Adresse : {{user.number}}, {{user.street}} {{user.zip_code}} {{user.city}}, {{user.country}}
+                <br>
+                <h2>Contact</h2>
+                <hr>
+                <img src="{% static 'img/telephone_by_nawicon_white.png' %}" width="20" height="20">
+                {{ user.mobile }}<br>
+                <img src="{% static 'img/email_by_those_icons_white.png' %}" width="20" height="20">
+                {{ user.email }}<br>
+                <img src="{% static 'img/logo-linkedin_by_google_white.png' %}" width="20" height="20">
+                <a href="{{ user.linkedin_url }}" >{{ user.linkedin_url }}</a>
+                <br>
+                {% if use.is_authenticated %}
+                Code d'accès invité : {{user.guest_access_code}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>

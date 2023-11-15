@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <div class="text-center">
+        <h2>Formations</h2>
+    </div>
+    {% for instance in formations %}
+        <div class="ticket border border-dark m-4 p-2 row">
+            <div class="align-self-center col-sm-6">
+                {% include 'cv/partials/formation_snippet.html' with formation=instance %}
+            </div>
+            <div class="text-end col-sm-6">
+                <a class="btn btn-dark mt-2 mb-2 me-4" href="{% url 'cv:edit_formation' instance.id %}">
+                    🖉
+                </a>
+                <a class="btn btn-dark mt-2 mb-2 me-4" href="{% url 'cv:delete_formation' instance.id %}">
+                    X
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="text-end">
+        <a class="btn btn-dark mt-2 mb-2 me-4" href="{% url 'cv:create_formation' %}">
+            Ajouter...
+        </a>
+    </div>
+{% endblock content %}

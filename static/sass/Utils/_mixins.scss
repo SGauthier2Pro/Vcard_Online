@@ -1,0 +1,21 @@
+@mixin border($colour:$colour-black) {
+    border: 2px solid $colour;
+}
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
+
+@mixin mobile-and-tablet {
+    @media screen and (min-width: map-get($breakpoints, mobile)) and (max-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+@mixin strong($colour:$colour-btn-background-hover ) {
+    color: $colour;
+    font-weight: 900;
+    font-style: italic;
+}

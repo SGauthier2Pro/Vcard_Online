@@ -1,0 +1,28 @@
+/* mainscreen */
+
+.mainscreen {
+    color: $colour-white;
+    margin-top: 110px;
+    @include mobile-and-tablet() {
+        margin-top: 100px;
+    }
+    @include mobile-only() {
+        margin-top: 110px;
+    }
+}
+
+
+.mainscreen-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    z-index: -1;
+    overlay: hidden;
+    background-image: $picture-background;
+    background-repeat: no-repeat;
+    animation-name: kenburns-bottom-left;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}

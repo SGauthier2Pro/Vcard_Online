@@ -1,0 +1,36 @@
+/* Proj-prev */
+
+.proj-prev {
+  color: $colour-white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  &__image {
+    margin: auto;
+    padding-top : 20px;
+  }
+  &__heading {
+    font-size: 4rem;
+    @include mobile-only() {
+        font-size: 2.5rem;
+    }
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: 0;
+    line-height: 6rem;
+  }
+  &__byline {
+    width: 75%;
+    margin: auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    font-size: 1.66rem;
+  }
+  &:hover {
+    cursor: pointer;
+    & > .proj-prev__heading {
+      background: $colour-btn-background-hover;
+    }
+  }
+}

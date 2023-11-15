@@ -3,6 +3,12 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator, MaxValueValidator, MinLengthValidator
 from django_countries.fields import CountryField
 
+from PIL import Image
+
+import random
+import string
+from datetime import datetime
+
 
 class CustomUser(AbstractUser):
 
@@ -87,5 +93,41 @@ class CustomUser(AbstractUser):
         default='default_profile.png'
     )
 
+    guest_access_code = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        verbose_name='Guest Access Code'
+    )
+
+    guest_access_code_set_at = models.DateTimeField(
+        blank=True,
+        null=True,
+        verbose_name='Guest Access Code Set At'
+    )
+
     def __str__(self):
         return self.username
+
+    IMAGE_MAX_SIZE = (215, 215)
+
+    def resize_image(self):
+        profile_photo = Image.open(self.profile_photo)
+        profile_photo.thumbnail(self.IMAGE_MAX_SIZE)
+        profile_photo.save(self.profile_photo.path)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.profile_photo:
+            self.resize_image()
+
+    def generate_guest_access_code(self):
+        code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        self.guest_access_code = code
+        self.guest_access_code_set_at = datetime.now()
+
+    def reset_guest_access_code(self):
+        if self.guest_access_code_set_at:
+            now = datetime.now()
+            if (now - self.guest_access_code_set_at).days >= 7:
+                self.guest_access_code = None

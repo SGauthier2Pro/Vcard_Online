@@ -1,0 +1,48 @@
+/* Forms */
+
+.form {
+  width: 100%;
+  padding-bottom: 1.5rem;
+  &__heading {
+    color: $colour-white;
+    text-shadow: 0.55rem 0.55rem #11af82;
+    background: $colour-btn-background-hover;
+    line-height: 5rem;
+    padding: 1.5rem;
+  }
+  &__field {
+    & label {
+      color: colour-btn-background-hover;
+      display: block;
+      font-size: 2rem;
+      line-height: 2rem;
+      padding-top: 1.5rem;
+    }
+    & input {
+      &:active {
+        border: 0.1rem solid colour-btn-background-hover;
+        background-color: colour-btn-background-hover;
+        color: $colour-nav-active;
+      }
+      &:focus {
+        border: 0.1rem solid colour-btn-background-hover;
+        background-color: colour-btn-background-hover;
+        color: $colour-nav-active;
+      }
+      &:invalid {
+        border: 0.1rem solid $colour-white;
+        background-color: $colour-white;
+        color: $colour-nav-active;
+      }
+    }
+    & textarea {
+      width: 100%;
+      color: $colour-btn-background-hover;
+      background: $colour-nav-active;
+      border: 0.1rem solid $colour-btn-background-hover;
+      outline: none;
+      padding: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+}

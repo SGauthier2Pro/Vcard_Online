@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from PIL import Image
 
 from skill.models.technology import Technology
 from skill.models.softskill import SoftSkill
@@ -39,7 +40,7 @@ class Project(models.Model):
     softskills = models.ManyToManyField(SoftSkill, blank=True)
 
     tasks = models.TextField(
-        max_length=255,
+        max_length=600,
         verbose_name='tasks',
         blank=True,
         null=True
@@ -57,9 +58,37 @@ class Project(models.Model):
         null=True
     )
 
+    documents = models.FileField(
+        verbose_name='Documents',
+        blank=True,
+        null=True
+    )
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,
                              on_delete=models.CASCADE)
 
+    image = models.ImageField(null=True,
+                              blank=True,
+                              verbose_name='Image')
+
     def __str__(self):
         return self.title
+
+    def get_task_list(self):
+        if self.tasks:
+            return str(self.tasks).split('-')
+        else:
+            return []
+
+    IMAGE_MAX_SIZE = (215, 310)
+
+    def resize_image(self):
+        image = Image.open(self.image)
+        image.thumbnail(self.IMAGE_MAX_SIZE)
+        image.save(self.image.path)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            self.resize_image()

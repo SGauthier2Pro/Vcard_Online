@@ -1,4 +1,7 @@
 {% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'skill/partials/skills_menu_snippet.html' %}
+{% endblock sidebar %}
 {% block content %}
     {% if technology.user == request.user %}
         <h2 class="text-center mb-4">Supprimer votre Technologie ?</h2>

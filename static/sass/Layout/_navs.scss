@@ -1,0 +1,39 @@
+/* Navs */
+
+.navbar {
+  background: $color-header-background;
+  background: $gradient-header-background;
+  @include mobile-and-tablet() {
+    justify-content: center;
+  }
+  @include mobile-only() {
+    justify-content: center;
+  }
+}
+
+.nav__link {
+  display: inline;
+  font-size: 2.5rem;
+  @include mobile-and-tablet() {
+    font-size: 2rem;
+  }
+  @include mobile-only() {
+    font-size: 1.5rem;
+  }
+  margin-left: 1rem;
+  & a {
+    text-decoration: none;
+    color: $color-btn-hover;
+    font-weight: 900;
+    &:hover {
+      color: $colour-white;
+    }
+  }
+  &--active {
+    color: $colour-nav-active;
+    &:hover {
+      cursor: default;
+      color: $colour-nav-active;
+    }
+  }
+}

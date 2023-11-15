@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter un Centre d'Intérêt</h2>
+
+
+
+    <div class="d-flex flex-column mb-4 col-sm-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ hobbies_form.edit_hobbies }}
+            <label class="ms-3" for="{{ hobbies_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ hobbies_form.title}}
+            </div>
+            <label class="ms-3" for="{{ hobbies_form.description.id }}">Description</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ hobbies_form.description}}
+            </div>
+            {% include 'cv/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

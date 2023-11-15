@@ -1,0 +1,30 @@
+/* header */
+
+header {
+  width: 100%;
+  height: auto;
+  z-index: 3;
+  & img {
+    width: 75px;
+    height: 75px;
+    @include mobile-and-tablet() {
+      width: 65px;
+      height: 65px;
+    }
+    @include mobile-only() {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+.header__logo {
+  font-size: 4rem;
+  @include mobile-and-tablet() {
+    font-size: 3rem;
+  }
+  @include mobile-only() {
+    font-size: 2.5rem;
+  }
+  color: $colour-nav-active;
+}

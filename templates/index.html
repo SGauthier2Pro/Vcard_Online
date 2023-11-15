@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,900i" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cv_printing.css' %}" media="print">
     {% if user.is_authenticated %}
         <title>{{ user.first_name }} {{ user.last_name }}'s Portfolio</title>
     {% else %}
@@ -18,50 +19,81 @@
 
 <body>
 
-    <header class="header">
+    <header class="fixed-content">
+        <nav class="navbar navbar-expand-sm">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/VcardOline_logo.png' %}">
+            </a>
         {% if user.is_authenticated %}
-        <h1 class="header__logo">
-            {{ user.first_name }} {{ user.last_name }}
-        </h1>
-        <nav class="nav">
-            <ul>
-                <li class="nav__link nav__link--active">work</li>
-                <li class="nav__link"> <a href="{% url 'skill:skill_home' %}">Skills</a> </li>
-                <li class="nav__link"> <a href="{% url 'project:project_home' %}">Projects</a> </li>
-                <li class="nav__link"> <a href="./about.html">about</a> </li>
-                <li class="nav__link"> <a href="./contact.html">contact</a> </li>
-                <li class="nav__link"> <a href="{% url 'users:edit_profile' %}">Profile</a> </li>
-                <li class="nav__link"> <a href="{% url 'users:logout' %}">Déconnexion</a> </li>
-            </ul>
-
-        </nav>
+                <h1 class="header__logo">
+                    {{ user.first_name }} {{ user.last_name }}
+                </h1>
+        {% elif access_code %}
+                 <h1 class="header__logo">
+                    {{ inviter.first_name }} {{ inviter.last_name }}
+                 </h1>
         {% else %}
-        <h1 class="header__logo">
-            VCard Online
-        </h1>
-        <nav class="nav">
-            <ul>
-                <li class="nav__link nav__link--active">
-                    <a href="{% url 'index' %}">enter ID</a>
-                </li>
-                <li class="nav__link"> <a href="{% url 'users:login' %}">login</a> </li>
-                <li class="nav__link"> <a href="{% url 'users:signup' %}">signup</a> </li>
-            </ul>
-
-        </nav>
+                <h1 class="header__logo">
+                    VCard Online
+                </h1>
         {% endif %}
-    </header>
 
-    <section class="quote">
-        "<strong> Faites quelque chose,</strong> et si ça ne fonctionne pas,
-        <br/><strong>  essayez autre chose. "</strong>
-    </section>
-    <section class="container">
-        {% block content %}{% endblock content %}
-    </section>
+            <button class="navbar-toggler ms-auto mx-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mx-4">
+                {% if user.is_authenticated %}
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'project:project_home' %}">Project</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'skill:skill_home' %}">Skills</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:cv_home' %}">Cv</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:profile_home' %}">Profile</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:logout' %}">Déconnexion</a> </li>
+                {% elif access_code %}
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'project:invited_project_home' access_code=access_code %}">Projects</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:about' access_code=access_code %}">About</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:contact' access_code=access_code %}">Contact</a> </li>
+                {% else %}
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'access_code' %}">enter ID</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:login' %}">login</a> </li>
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:signup' %}">signup</a> </li>
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="background-image kenburns-bottom-left"></div>
+    <div class="mainscreen row">
+
+        {% if user.is_authenticated or access_code %}
+            <div class="sidebar col-sm-2">
+                {% block sidebar %}{% endblock sidebar %}
+            </div>
+            <div class="display col-sm-8">
+        {% else %}
+            <div class="display col-12">
+        {% endif %}
+
+            <section class="container">
+                {% block content %}
+                    {% if user.is_authenticated %}
+                    <div class="welcome">
+                        Bienvenu {{ user.first_name }} !
+                    </div>
+                    {% else %}
+                    <div class="welcome">
+                        Bienvenu sur VCard Online !<br>
+                        Pour commencer Autentifiez-vous ou entrer un ID d'accès invité !
+                    </div>
+                    {% endif %}
+                {% endblock content %}
+            </section>
+        </div>
+    </div>
     <script src="{% static 'js/jquery-3.6.1.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-
 </body>
 
 </html>

@@ -1,12 +1,14 @@
 {% extends 'index.html' %}
 {% block content %}
-    <h2>Inscription</h2>
+    <h2 class="text-center">Inscription</h2>
     {% if form.errors %}
         {{ form.errors }}
     {% endif %}
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >S’inscrire</button>
+        <div class="text-md-end">
+            <button class="btn btn-secondary mt-3" type="submit" >S'inscrire</button>
+        </div>
     </form>
 {% endblock content %}

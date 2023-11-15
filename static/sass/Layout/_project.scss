@@ -1,0 +1,70 @@
+/* projet */
+
+.project {
+  width: 100%;
+  margin-top: 4rem;
+  margin-bottom: 1.8rem;
+  &__image {
+    margin: auto;
+    width: 50%;
+    padding-top: 56.25%;
+    position: relative;
+    & img {
+      position: absolute;
+      top: 15%;
+      @include mobile-and-tablet() {
+        top: 50%;
+      }
+      left: 50%;
+      max-width: 70%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &__synopsis {
+    padding-left: 1.5rem;
+    & h1 {
+      color: $colour-white;
+      text-shadow: #d5e3eb 1px 0 10px;
+    }
+    & p,li {
+      font-weight: 900;
+      line-height: 2.5rem;
+      & strong {
+        @include strong($colour-btn-background-hover);
+      }
+    }
+  }
+  &__skills {
+    position: absolute;
+    top: 45%;
+    @include mobile-and-tablet() {
+        position: relative;
+    }
+    @include mobile-only() {
+        position: relative;
+    }
+    & li {
+      color: $colour-white;
+      font-weight: 900;
+    }
+    & p strong {
+      @include strong($colour-btn-background-hover);
+    }
+  }
+  &__docs {
+    position: relative;
+    top: 0px;
+    @include mobile-and-tablet() {
+        top: 0;
+    }
+    @include mobile-only() {
+        top: 0;
+    }
+    & p {
+      color: $colour-white;
+      & strong {
+        @include strong($colour-btn-background-hover);
+      }
+    }
+  }
+}

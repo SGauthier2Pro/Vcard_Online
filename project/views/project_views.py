@@ -4,6 +4,7 @@ from django.db.models import Q
 
 from project.models.project import Project
 from project.forms import projectform
+from users.models.customuser import CustomUser
 
 
 @login_required
@@ -18,16 +19,78 @@ def index(request):
                   )
 
 
+def index_invited(request, access_code):
+    if CustomUser.objects.filter(guest_access_code=access_code):
+        user_inviter = CustomUser.objects.get(guest_access_code=access_code)
+        user_inviter.reset_guest_access_code()
+        if user_inviter.guest_access_code:
+            projects = Project.objects.filter(
+                Q(user=user_inviter)
+            )
+
+            return render(request,
+                          'project/projects_index.html',
+                          context={'projects': projects,
+                                   'access_code': access_code,
+                                   'inviter': user_inviter}
+                          )
+        else:
+            return render(request,
+                          'project/access_denied.html',
+                          context={
+                              'message': "Le code que vous utilisez n'est pas valide !"
+                          })
+    else:
+        return render(request,
+                      'project/access_denied.html',
+                      context={
+                          'message': "Le code invité que vous utilisez n'est pas valide !"
+                      })
+
 @login_required
 def show_project(request, project_id):
-    project = get_object_or_404(Project,
-                                id=project_id)
-    return render(request,
-                  'project/project.html',
-                  context={
-                      'project': project
-                           }
-                  )
+    if Project.objects.filter(id=project_id):
+        project = Project.objects.get(id=project_id)
+        return render(request,
+                      'project/project.html',
+                      context={
+                          'project': project
+                               }
+                      )
+    else:
+        return render(request,
+                      'project/access_denied.html',
+                      context={
+                          'message': "Le code projet n'est pas valide !"
+                      })
+
+
+def show_project_invited(request, project_id, access_code):
+    if CustomUser.objects.filter(guest_access_code=access_code):
+        user_inviter = CustomUser.objects.get(guest_access_code=access_code)
+        user_inviter.reset_guest_access_code()
+        if Project.objects.filter(id=project_id):
+            project = Project.objects.get(id=project_id)
+            return render(request,
+                          'project/project.html',
+                          context={
+                              'project': project,
+                              'access_code': access_code,
+                              'inviter': user_inviter
+                                   }
+                          )
+        else:
+            return render(request,
+                          'project/access_denied.html',
+                          context={
+                              'message': "Le code projet n'est pas valide !"
+                          })
+    else:
+        return render(request,
+                      'project/access_denied.html',
+                      context={
+                          'message': "Le code invité n'est pas valide !"
+                      })
 
 
 @login_required

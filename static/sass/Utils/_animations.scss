@@ -1,0 +1,22 @@
+/* animations */
+
+
+.text-flicker-in-glow {
+	-webkit-animation: text-flicker-in-glow 1s linear both;
+	        animation: text-flicker-in-glow 1s linear both;
+}
+
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.scale-in-center {
+	-webkit-animation: scale-in-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.kenburns-bottom-left {
+	-webkit-animation: kenburns-bottom-left 5s ease-out both;
+	        animation: kenburns-bottom-left 5s ease-out both;
+}

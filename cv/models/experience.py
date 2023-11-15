@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from cv.models.cv import Cv
 
 
 class Experience(models.Model):
@@ -43,8 +42,6 @@ class Experience(models.Model):
         blank=True,
         null=True
     )
-
-    cvs = models.ManyToManyField(Cv)
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,

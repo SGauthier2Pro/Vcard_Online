@@ -1,0 +1,91 @@
+{% load static %}
+{% load cv_extras %}
+<main class="cv row bg-white">
+    <div class="cv-info col-4 bg-light border-0 p-3">
+        <div class="text-center">
+            <img class="rounded-circle m-5" src="{{ cv.user.profile_photo.url }}">
+        </div>
+        <div class="pt-5">
+            <div class="contact pt-2">
+                <h2>CONTACT</h2>
+                <hr>
+                <img src="{% static 'img/telephone_by_nawicon_white.png' %}" width="20" height="20">
+                {{ cv.user.mobile }}<br>
+                <img src="{% static 'img/email_by_those_icons_white.png' %}" width="20" height="20">
+                {{ cv.user.email }}<br>
+                <img src="{% static 'img/broche_by_yoonro10_white.png' %}" width="20" height="20">
+                {{ cv.user.city }}, {{ cv.user.country }}<br>
+                <img src="{% static 'img/logo-linkedin_by_google_white.png' %}" width="20" height="20">
+                <a href="{{ cv.user.linkedin_url }}" >{{ cv.user.linkedin_url }}</a>
+            </div>
+            <div class="language pt-4">
+                <h2>LANGUES</h2>
+                <hr>
+                <ul>
+                    {% for language in cv.languages.all %}
+                    <li>{% include 'skill/partials/language_snippet.html' with language=language %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="softskills pt-4">
+                <h2>COMPETENCES</h2>
+                <hr>
+                <ul>
+                    {% for softskill in cv.softskills.all %}
+                    <li>{% include 'skill/partials/softskill_snippet.html' with softskill=softskill %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="technologies pt-4">
+                <h2>TECHNOLOGIES</h2>
+                <hr>
+                <ul>
+                    {% for technology in cv.technologies.all %}
+                    <li>{% include 'skill/partials/technology_snippet.html' with technology=technology %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="hobbies pt-4">
+                <h2>CENTRES D'INTERET</h2>
+                <hr>
+                <ul>
+                    {% for hobby in cv.hobbies.all %}
+                    <li>{{ hobby.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="cv-pro col-8 border-0 p-4">
+        <div class="p-2">
+            <div class="cv-name border-top border-dark text-uppercase text-center">
+                {{cv.user.first_name}} {{cv.user.last_name}}
+            </div>
+            <div class="cv-title border-bottom border-dark text-center">
+                {{cv.title}}
+            </div>
+        </div>
+        <br>
+        <div class="profile">
+            <h2>PROFIL</h2>
+            <hr>
+            {{ cv.profil }}
+        </div>
+        <br>
+        <div class="experience">
+            <h2>EXPERIENCES PROFESSIONNELLES</h2>
+            <hr>
+            {% for experience in cv.experiences.all%}
+                {% include 'cv/partials/experience_snippet.html' with experience=experience %}
+            {% endfor %}
+        </div>
+        <br>
+        <div class="formation">
+            <h2>FORMATIONS</h2>
+            <hr>
+            {% for formation in cv.formations.all%}
+                {% include 'cv/partials/formation_snippet.html' with formation=formation %}
+            {% endfor %}
+        </div>
+    </div>
+</main>

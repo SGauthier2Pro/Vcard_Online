@@ -25,6 +25,8 @@ class ProjectForm(forms.ModelForm):
             'tasks',
             'link_git',
             'presentation_file',
+            'image',
+            'documents',
         ]
 
     def __init__(self, user, *args, **kwargs):

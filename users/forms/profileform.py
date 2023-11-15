@@ -18,6 +18,7 @@ class ProfileForm(forms.ModelForm):
                   'state',
                   'zip_code',
                   'country',
+                  'guest_access_code',
                   'linkedin_url',
                   'profile_photo',
                   )

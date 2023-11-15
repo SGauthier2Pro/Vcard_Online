@@ -1,8 +1,8 @@
-<div class="fw-semibold">
+<div>
     {{ technology.title }} :
         {% for i in "x"|ljust:"5" %}
             {% if forloop.counter <= technology.level %}
-                <span class="text-green">■</span>
+                <span class="text-green fw-semibold">■</span>
             {% else %}
                 <span>□</span>
             {% endif %}

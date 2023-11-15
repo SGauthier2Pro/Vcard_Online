@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+    <h2 class="text-center mb-4">Ajouter un CV</h2>
+
+    <div class="d-flex flex-column mb-4 col-sm-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ cv_form.edit_cv }}
+            <label class="ms-3" for="{{ cv_form.title.id }}">Intitulé du Poste / Stage</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.title}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.profil.id }}"> Descritpif du Profil</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.profil}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.experiences.id }}">Expériences à inclure</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.experiences}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.softskills.id }}">Compétences à mettre en avant</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.softskills}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.technologies.id }}">Technologies à mettre en avant</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.technologies}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.languages.id }}">Langues Connues</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.languages}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.formations.id }}">Formations et Diplomes</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.formations}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.hobbies.id }}">Centre d'Intérêts</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.hobbies}}
+            </div>
+            <label class="ms-3" for="{{ cv_form.can_be_display.id }}">Rendre accessible ?</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ cv_form.can_be_display}}
+            </div>
+            {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+        </form>
+    </div>
+{% endblock content %}

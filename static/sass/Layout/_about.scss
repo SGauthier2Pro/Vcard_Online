@@ -1,0 +1,50 @@
+/* about */
+
+.about {
+  position: relative;
+  color: $colour-white;
+  display: flex;
+  flex: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  &__heading {
+    grid-area: heading;
+    color: $colour-white;
+    text-shadow: 0.55rem 0.55rem #11af82;
+    text-align: right;
+    padding-right: 1.5rem;
+  }
+  &__imagery {
+    grid-area: imagery;
+  }
+  &__pic {
+    overflow: hidden;
+    width: 80%;
+    border-radius: 1000rem;
+    border: 1.5rem solid $colour-btn-background-hover;
+    & img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &__copy {
+    grid-area: copy;
+    & p {
+      line-height: 2.4rem;
+      margin-bottom: 3.375rem;
+    }
+  }
+   a {
+      position: relative;
+      z-index: 1;
+   }
+}
+
+.about-softskills {
+    animation-delay : 0.7s;
+}
+
+.about-knowledges {
+    animation-delay: 1.4s;
+}

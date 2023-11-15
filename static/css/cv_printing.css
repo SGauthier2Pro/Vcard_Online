@@ -1,0 +1,108 @@
+@media all {
+        .cv {
+            top: 0;
+        }
+        /* fonts */
+        @font-face {
+            font-family: "fontscorecomttwcenmt";
+            src: local("fontscorecomttwcenmt"), url("../fonts/fontscorecomttwcenmt.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "cadmanregular";
+            src: url("../fonts/Cadman_Roman-webfont.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "acmeregular";
+            src: url("../fonts/Acme-Regular-webfont.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* cv printing */
+        header, header__logo, header img, nav, button, .quote, footer {
+            display: none;
+        }
+
+        html {
+          font-size: 40%;
+        }
+
+        body {
+            box-sizing: border-box;
+            background: none;
+        }
+
+        h1 {
+            font-family: "acmeregular", sans-serif;
+            font-weight: 900;
+            font-size: 16pt;
+            font-style: italic;
+        }
+
+        h2 {
+            font-family: "fontscorecomttwcenmt", sans-serif;
+            font-weight: 900;
+            font-size: 14pt;
+            margin-bottom: 5pt;
+        }
+
+        h3 {
+            font-weight: 900;
+            font-size: 10pt;
+        }
+        .container {
+            border: none;
+        }
+
+        .cv-photo {
+            background: rgb(221,232,225);
+            background: linear-gradient(0deg, rgba(221,232,225,1) 0%, rgba(89,216,242,1) 60%);
+        }
+
+        .cv-info {
+            background: rgb(60,71,84);
+            background: linear-gradient(90deg, rgba(60,71,84,1) 0%, rgba(31,51,65,1) 100%);
+            color: #ffffff;
+        }
+        .cv-info a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .cv-info ul {
+            list-style-type: none;
+        }
+        }
+
+        .cv-pro {
+            color: rgb(60,71,84);
+        }
+
+        .cv-title {
+            font-size: 16pt;
+            font-weight: 900;
+            color: rgb(60,71,84);
+        }
+
+        .cv-name {
+            font-family: "Roboto", sans-serif;
+            font-weight: 900;
+            font-size: 20pt;
+            font-style: italic;
+            color: rgb(60,71,84);
+
+        }
+
+        .cv-description {
+            font-weight: 500;
+            color: rgb(60,71,84);
+        }
+
+        .company-time-info {
+            font-size: 14pt;
+            font-weight: 900;
+            color: rgb(60,71,84);
+}

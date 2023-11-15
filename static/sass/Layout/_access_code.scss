@@ -1,0 +1,12 @@
+/* access_code */
+
+.access_code form {
+    display: flex;
+    flex: row;
+    align: center;
+    justify-content: center;
+    @include mobile-only() {
+        display: flex;
+        flex: column;
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "vcardonline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./static/sass/main.scss:./static/css/style.css",
+    "prefix": "postcss ./static/css/style.css --use autoprefixer -d ./static/css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SGauthier2Pro/Vcard_Online.git"
+  },
+  "author": "Sylvain GAUTHIER",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SGauthier2Pro/Vcard_Online/issues"
+  },
+  "homepage": "https://github.com/SGauthier2Pro/Vcard_Online#readme"
+}

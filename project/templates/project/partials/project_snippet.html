@@ -1,49 +1,66 @@
 {% load static %}
-{% load post_extras %}
-<main class="project">
-    <div class="project__image">
-            <img src="{% static 'img/photography_1280w.jpg' %}" srcset="
-        {% static 'img/photography_3000w.jpg' %} 3000w,
-        {% static 'img/photography_1920w.jpg' %} 1920w,
-        {% static 'img/photography_0864w.jpg' %} 864w,
-        {% static 'img/photography_0640w.jpg' %} 640w,
-        {% static 'img/photography_0640w.jpg' %} 640w,
-        {% static 'img/photography_0420w.jpg' %} 420w
-        " alt="project title goes here" >
+{% load project_extras %}
+<main class="project row">
+    <!-- Colonne de gauche -->
+    <div class="project__image col-lg-6 order-1">
+            <img src="{{project.image.url}}" alt="project title goes here" >
     </div>
-    <div class="project__tags">
-        <p><strong>SoftSkills:</strong></p>
-            <ul>
-            {% for softskill in project.softskills.all %}
-            <li>{{ softskill.title }}</li>
-            {% endfor %}
-            </ul>
-
-        <p><strong>Technologies:</strong></p>
-            <ul>
-            {% for technology in project.technologies.all %}
-                <li>{{ technology.title }}</li>
-            {% endfor %}
-            </ul>
-
+    <div class="project__skills col-lg-6 order-3">
+        <div class="container border border-0">
+            <div class="row justify-content-start">
+                <div class="col-lg-4 mb-3">
+                    <p><strong>SoftSkills:</strong>
+                        <ul>
+                        {% for softskill in project.softskills.all %}
+                        <li>{{ softskill.title }}</li>
+                        {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <p><strong>Technologies:</strong>
+                        <ul>
+                        {% for technology in project.technologies.all %}
+                            <li>{{ technology.title }}</li>
+                        {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="project__synopsis">
-        <h1 class="project__heading">
+    <!-- Colonne de droite -->
+    <div class="project__synopsis col-lg-6 order-2">
+        <h1 class="project__heading mb-5">
             {{project.title}}
         </h1>
-        <p class="project__copy">
+        <p class="mt-2 mb-5">
             {{project.description}}
         </p>
-        <p>
+        <p class="mt-2 mb-5 d-flex flex-column">
             <strong>Début:</strong> {{project.date_started|get_posted_at_display}}
             <strong>Fin:</strong> {{project.date_end|get_posted_at_display}}
         </p>
-        <p>
-            <strong>Compétences requises :</strong>
-            {{project.tasks}}
+        <p class="mt-2 mb-5">
+            <strong>Tâches demandées :</strong>
+            <ul>
+            {% for task in project.get_task_list %}
+                <li>{{task}}</li>
+            {% endfor %}
+            </ul>
         </p>
     </div>
-    <a class="btn btn-secondary mb-4 me-2"  href="{{project.link_git}}">Checkout the code on Github</a>
-    <a class="btn btn-secondary mb-4 me-4"  href="{{project.presentation_file.url}}">Download presentation</a>
+    <div class="project__docs col-lg-8 order-4">
+        <p><strong>Links:</strong></p>
+        {% if project.link_git %}
+        <a class="btn btn-secondary mb-4 me-2"  href="{{project.link_git}}">Github</a>
+        {% endif %}
+        {% if project.presentation_file %}
+        <a class="btn btn-secondary mb-4 me-4"  href="{{project.presentation_file.url}}">PowerPoint</a>
+        {% endif %}
+        {% if project.documents %}
+        <a class="btn btn-secondary mb-4 me-4"  href="{{project.documents.url}}">Documents</a>
+        {% endif %}
+    </div>
 </main>

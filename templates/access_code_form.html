@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="access_code">
+    <h2 class="text-center mb-4">Entrez votre code invité !</h2>
+
+    <div class="d-flex flex-column mb-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="col text-center mt-3">
+            {{ form.access_code_invited }}
+            </div>
+            <div class="col text-center mt-4">
+            {% include 'partials/validation_buttons_snippet.html' with word='Envoyer' %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

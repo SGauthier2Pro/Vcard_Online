@@ -1,28 +1,11 @@
 {% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'skill/partials/skills_menu_snippet.html' %}
+{% endblock sidebar %}
 {% block content %}
     <div class="text-center">
         <h2>Skills</h2>
+        <p>Gestion des softskills, des technologies et des langues.</p>
     </div>
 
-    <div class="border border-secondary m-4 p-2 row">
-        <div class="text-center col-sm-4">
-            <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:language_home' %}">
-                Language Manager
-            </a>
-        </div>
-        <div class="text-center col-sm-4">
-            <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:softskill_home' %}">
-                Softskill Manager
-            </a>
-        </div>
-        <div class="text-center col-sm-4">
-            <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'skill:technology_home' %}">
-                Technology Manager
-            </a>
-        </div>
-    </div>
-
-    <div class="text-end">
-        <input class="btn btn-secondary mb-4 me-2" type="button" value="Retour" onclick="history.go(-1)">
-    </div>
 {% endblock content %}

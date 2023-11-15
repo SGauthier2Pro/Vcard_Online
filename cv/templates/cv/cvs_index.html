@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block sidebar %}
+    {% include 'cv/partials/cv_menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+<div class="text-center">
+    <h2>CV Manager</h2>
+</div>
+<main class="cv-grid">
+
+        <div class="cv-list">
+            {% for cv in cvs %}
+            <section class="cv-prev" onclick="location.href='{% url 'cv:display_cv' cv.id %}'">
+                {% include 'cv/partials/cv_minus_snippet.html' with cv=cv %}
+            </section>
+
+            {% endfor %}
+        </div>
+        <div class="text-end">
+            <a class="btn btn--full-width btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:create_cv' %}">
+                Ajouter...
+            </a>
+        </div>
+</main>
+
+{% endblock content %}
