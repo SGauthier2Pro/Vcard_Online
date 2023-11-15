@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-  window.onprint = function(){
+  window.onafterprint = function(){
     history.back();
   }
 });

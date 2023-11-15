@@ -516,7 +516,7 @@ header img {
 }
 
 /* contact */
-.contact {
+.contact_form {
   position: relative;
   color: #fff;
   display: flex;
@@ -525,18 +525,18 @@ header img {
   align-items: center;
   z-index: 1;
 }
-.contact form {
+.contact_form form {
   width: 80%;
   max-width: 536px;
   justify-content: center;
 }
-.contact form input {
+.contact_form form input {
   border-radius: 5px;
 }
-.contact form textarea {
+.contact_form form textarea {
   border-radius: 5px;
 }
-.contact form button {
+.contact_form form button {
   width: 100px;
 }
 
