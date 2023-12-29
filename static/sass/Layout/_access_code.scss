@@ -2,11 +2,7 @@
 
 .access_code form {
     display: flex;
-    flex: row;
+    flex-direction: column;
     align: center;
     justify-content: center;
-    @include mobile-only() {
-        display: flex;
-        flex: column;
-    }
 }

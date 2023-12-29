@@ -1,0 +1,68 @@
+/*portfolio */
+
+.portfolio {
+    width: auto;
+    & svg {
+        font-family: "fontscorecomttwcenmt", sans-serif;
+        width: 100%; height: 100%;
+
+        & text {
+            animation: stroke 2s linear alternate;
+            stroke-width: 2;
+            stroke: #FFFFFF;
+            font-size: 74px;
+        }
+    }
+}
+
+.block-central {
+    padding-right: 15rem;
+    @include mobile-only() {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.about-knowledges {
+    & ul li img {
+        height: 60px;
+        width: 60px;
+        @include mobile-only() {
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
+
+.carousel-inner {
+    height: 463px;
+    @include mobile-only() {
+        height: 574px;
+    }
+}
+
+#contact {
+    @include tablet-and-more() {
+        background-image: url('../img/border_contact_portfolio.svg');
+        background-repeat: no-repeat;
+    }
+    @include tablet-and-more() {
+        position: fixed;
+        z-index: 2;
+    }
+
+    width: 23vw;
+    @include mobile-only() {
+        width: 90vw;
+    }
+    padding: 3rem;
+    color: $colour-white;
+    font-size: 1.5rem;
+    & a {
+      text-decoration: none;
+      color: $colour-white;
+      &:hover {
+        color: red;
+      }
+    }
+}

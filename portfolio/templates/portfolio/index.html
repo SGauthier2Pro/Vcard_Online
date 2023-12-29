@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block sidebar %}
+    {% include 'portfolio/partials/menu_snippet.html' %}
+{% endblock sidebar %}
+{% block content %}
+<div class="portfolio row">
+    <div class="block-central col-sm-10">
+        <div class="introduction mb-5">
+            <svg>
+                <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                    {{ portfolio.welcome_sentence }}
+                <text>
+            </svg>
+            <p class="fs-3">{{ portfolio.introduction_text }}</p>
+        </div>
+        <div id="projects" class="project_block my-5">
+            {% include 'portfolio/partials/portfolio_projects_snippet.html' with projects=projects %}
+        </div>
+        <div id="about" class="about flex-column">
+            {% include 'portfolio/partials/portfolio_about_snippet.html' with cv=cv %}
+        </div>
+    </div>
+    <div class="block-right col-sm-2">
+        <div id="contact" class="ml-5">
+            <div class="text-center">
+                <img class="rounded-circle m-5" src="{{ cv.user.profile_photo.url }}">
+            </div>
+            <h2>CONTACT</h2>
+            <hr>
+            <img src="{% static 'img/telephone_by_nawicon_white.png' %}" width="20" height="20">
+            {{ cv.user.mobile }}<br>
+            <img src="{% static 'img/email_by_those_icons_white.png' %}" width="20" height="20">
+            {{ cv.user.email }}<br>
+            <img src="{% static 'img/broche_by_yoonro10_white.png' %}" width="20" height="20">
+            {{ cv.user.city }}, {{ cv.user.country }}<br>
+            <img src="{% static 'img/logo-linkedin_by_google_white.png' %}" width="20" height="20">
+            <a href="{{ cv.user.linkedin_url }}" >{{ cv.user.linkedin_url }}</a><br>
+            <img src="{% static 'img/github_logo_white.png' %}" width="20" height="20">
+            <a href="{{ user.git_url }}" >{{ cv.user.git_url }}</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

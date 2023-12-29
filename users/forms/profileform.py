@@ -20,5 +20,6 @@ class ProfileForm(forms.ModelForm):
                   'country',
                   'guest_access_code',
                   'linkedin_url',
+                  'git_url',
                   'profile_photo',
                   )

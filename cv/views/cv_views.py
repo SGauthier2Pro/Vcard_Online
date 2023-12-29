@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.template import RequestContext
 
 from users.models.customuser import CustomUser
 
@@ -108,3 +109,17 @@ def delete_cv(request, cv_id):
                   'cv/delete_cv.html',
                   context=context)
 
+
+@login_required
+def make_cv_displayable(request, cv_id):
+    cvs = Cv.objects.filter(
+        Q(user=request.user)
+    )
+    for cv_to_check in cvs:
+        if cv_to_check.id == cv_id:
+            cv_to_check.can_be_display = True
+            cv_to_check.save()
+        else:
+            cv_to_check.can_be_display = False
+            cv_to_check.save()
+    return redirect('cv:cv_home')

@@ -1,0 +1,19 @@
+/* signup */
+
+.signup{
+      position: relative;
+      color: $colour-white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      & form {
+        width: 80%;
+        max-width: 536px;
+        justify-content: center;
+        & input {
+            border-radius: 5px;
+        }
+      }
+}

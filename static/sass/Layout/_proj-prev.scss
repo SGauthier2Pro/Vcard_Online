@@ -30,7 +30,7 @@
   &:hover {
     cursor: pointer;
     & > .proj-prev__heading {
-      background: $colour-btn-background-hover;
+      text-shadow: #d5e3eb 1px 0 10px;
     }
   }
 }

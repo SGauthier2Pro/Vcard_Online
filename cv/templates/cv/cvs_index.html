@@ -10,9 +10,17 @@
 
         <div class="cv-list">
             {% for cv in cvs %}
-            <section class="cv-prev" onclick="location.href='{% url 'cv:display_cv' cv.id %}'">
+            <div class="cv-prev" onclick="location.href='{% url 'cv:display_cv' cv.id %}'">
                 {% include 'cv/partials/cv_minus_snippet.html' with cv=cv %}
-            </section>
+                <div class="cv-prev__button">
+                    <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:edit_cv' cv.id %}">
+                        🖉
+                    </a>
+                    <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:delete_cv' cv.id %}">
+                        X
+                    </a>
+                </div>
+            </div>
 
             {% endfor %}
         </div>

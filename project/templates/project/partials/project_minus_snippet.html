@@ -1,10 +1,17 @@
 {% load static %}
-<div class="proj-prev__image">
-    <img src="{{project.image.url}}" alt="project title goes here">
+<div class="row">
+    <div class="col align-self-center">
+        <img src="{{project.image.url}}" alt="project title goes here" width="100" height="80">
+    </div>
+    <div class="col align-self-center">
+        {{ project.title }}
+    </div>
+    <div class="col align-self-center">
+                <a class="btn btn-secondary mt-2 mb-4 me-4" href="{% url 'project:edit_project' instance.id %}">
+                    🖉
+                </a>
+                <a class="btn btn-secondary mt-2 mb-4 me-4" href="{% url 'project:delete_project' instance.id %}">
+                    X
+                </a>
+            </div>
 </div>
-<h1 class="proj-prev__heading">
-    {{ project.title }}
-</h1>
-<p class="proj-prev__byline">
-    {{ project.description }}
-</p>

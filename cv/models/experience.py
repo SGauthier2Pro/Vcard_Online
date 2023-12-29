@@ -47,5 +47,8 @@ class Experience(models.Model):
                              null=True,
                              on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ('-date_started',)
+
     def __str__(self):
         return self.title

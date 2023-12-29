@@ -1,10 +1,4 @@
 <div>
-    {{ softskill.title }} :
-        {% for i in "x"|ljust:"5" %}
-            {% if forloop.counter <= softskill.level %}
-                <span class="text-green fw-semibold">■</span>
-            {% else %}
-                <span>□</span>
-            {% endif %}
-        {% endfor %}
+    {{ softskill.title }}
+
 </div>

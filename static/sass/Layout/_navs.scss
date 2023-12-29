@@ -11,7 +11,7 @@
   }
 }
 
-.nav__link {
+.nav-item {
   display: inline;
   font-size: 2.5rem;
   @include mobile-and-tablet() {
@@ -27,9 +27,10 @@
     font-weight: 900;
     &:hover {
       color: $colour-white;
+      text-shadow: #d5e3eb 1px 0 10px;
     }
   }
-  &--active {
+  & .active {
     color: $colour-nav-active;
     &:hover {
       cursor: default;

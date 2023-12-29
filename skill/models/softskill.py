@@ -17,6 +17,12 @@ class SoftSkill(models.Model):
                                         default=0,
                                         verbose_name='Level')
 
+    summary = models.TextField(
+        max_length=600,
+        null=True,
+        blank=True
+    )
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,
                              on_delete=models.CASCADE)

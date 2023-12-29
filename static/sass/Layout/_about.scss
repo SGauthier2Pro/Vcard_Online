@@ -1,7 +1,7 @@
 /* about */
 
 .about {
-  position: relative;
+  /* position: relative;
   color: $colour-white;
   display: flex;
   flex: column;
@@ -38,13 +38,16 @@
    a {
       position: relative;
       z-index: 1;
+   }*/
+   &-softskills {
+        animation-delay : 0.7s;
    }
-}
-
-.about-softskills {
-    animation-delay : 0.7s;
-}
-
-.about-knowledges {
-    animation-delay: 1.4s;
+   &-knowledges {
+        animation-delay: 0.7s;
+        & li {
+            margin: 3px;
+            list-style-type: none;
+            display: inline-block;
+        }
+   }
 }

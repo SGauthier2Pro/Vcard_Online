@@ -12,29 +12,27 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/cv_printing.css' %}" media="print">
     {% if user.is_authenticated %}
         <title>{{ user.first_name }} {{ user.last_name }}'s Portfolio</title>
+    {% elif access_code %}
+        <title>{{ inviter.first_name }} {{ inviter.last_name }}'s Portfolio</title>
     {% else %}
         <title>VCard Online</title>
     {% endif %}
 </head>
 
 <body>
-
+    {% if not access_code %}
     <header class="fixed-content">
         <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="{% static 'img/VcardOline_logo.png' %}">
+                <img src="{% static 'img/VcardOnline_logo.png' %}">
             </a>
         {% if user.is_authenticated %}
                 <h1 class="header__logo">
                     {{ user.first_name }} {{ user.last_name }}
                 </h1>
-        {% elif access_code %}
-                 <h1 class="header__logo">
-                    {{ inviter.first_name }} {{ inviter.last_name }}
-                 </h1>
         {% else %}
                 <h1 class="header__logo">
-                    VCard Online
+                    VP Card Online
                 </h1>
         {% endif %}
 
@@ -46,15 +44,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mx-4">
                 {% if user.is_authenticated %}
+                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'portfolio:portfolio_home' %}">Portfolio</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'project:project_home' %}">Project</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'skill:skill_home' %}">Skills</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:cv_home' %}">Cv</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:profile_home' %}">Profile</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:logout' %}">Déconnexion</a> </li>
-                {% elif access_code %}
-                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'project:invited_project_home' access_code=access_code %}">Projects</a> </li>
-                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:about' access_code=access_code %}">About</a> </li>
-                    <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'cv:contact' access_code=access_code %}">Contact</a> </li>
                 {% else %}
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'access_code' %}">enter ID</a> </li>
                     <li class="nav-item nav__link"> <a class="nav-link" href="{% url 'users:login' %}">login</a> </li>
@@ -64,11 +59,16 @@
             </div>
         </nav>
     </header>
+    {% endif %}
     <div class="background-image kenburns-bottom-left"></div>
     <div class="mainscreen row">
 
         {% if user.is_authenticated or access_code %}
+            {% if user.is_authenticated %}
             <div class="sidebar col-sm-2">
+            {% else %}
+            <div class="sidebar_portfolio sidebar_portfolio-shiny-border col-sm-4">
+            {% endif %}
                 {% block sidebar %}{% endblock sidebar %}
             </div>
             <div class="display col-sm-8">
@@ -76,20 +76,18 @@
             <div class="display col-12">
         {% endif %}
 
-            <section class="container">
-                {% block content %}
-                    {% if user.is_authenticated %}
-                    <div class="welcome">
-                        Bienvenu {{ user.first_name }} !
-                    </div>
-                    {% else %}
-                    <div class="welcome">
-                        Bienvenu sur VCard Online !<br>
-                        Pour commencer Autentifiez-vous ou entrer un ID d'accès invité !
-                    </div>
-                    {% endif %}
-                {% endblock content %}
-            </section>
+        {% block content %}
+            {% if user.is_authenticated %}
+            <div class="welcome">
+                Bienvenu {{ user.first_name }} !
+            </div>
+            {% else %}
+            <div class="welcome">
+                Bienvenu sur VP Card Online !<br>
+                Pour commencer Autentifiez-vous ou entrer un ID d'accès invité !
+            </div>
+            {% endif %}
+        {% endblock content %}
         </div>
     </div>
     <script src="{% static 'js/jquery-3.6.1.js' %}"></script>

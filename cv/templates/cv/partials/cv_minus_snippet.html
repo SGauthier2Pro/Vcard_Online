@@ -1,18 +1,15 @@
 {% load static %}
     <div class="cv-prev__image">
-        <img src="{% static 'img/cv_from_Freepik.png' %}" alt="project title goes here">
+        {% if cv.can_be_display %}
+            <img src="{% static 'img/cv_from_Freepik_white.png' %}">
+        {% else %}
+        <a href="{% url 'cv:make_cv_displayable' cv_id=cv.id %}">
+            <img src="{% static 'img/cv_from_Freepik.png' %}">
+        </a>
+        {% endif %}
     </div>
     <div class="cv-prev__heading">
         <h3>
             {{ cv.title }}
         </h3>
-    </div>
-
-    <div class="cv-prev__button">
-        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:edit_cv' cv.id %}">
-            🖉
-        </a>
-        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'cv:delete_cv' cv.id %}">
-            X
-        </a>
     </div>

@@ -60,7 +60,8 @@ class CvForm(forms.ModelForm):
             widget=forms.CheckboxSelectMultiple
         )
         self.fields['can_be_display'] = forms.BooleanField(
-            widget=forms.CheckboxInput
+            widget=forms.CheckboxInput,
+            required=False
         )
 
 

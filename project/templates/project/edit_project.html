@@ -51,6 +51,10 @@
                 <div class="ms-4 mb-3 p-2">
                     {{ edit_form.documents}}
                 </div>
+                <label class="ms-3" for="{{ edit_form.can_be_display.id }}">Publier sur Portfolio ?</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.can_be_display}}
+                </div>
                 {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
             </form>
         </div>

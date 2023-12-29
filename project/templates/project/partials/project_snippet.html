@@ -53,14 +53,20 @@
     </div>
     <div class="project__docs col-lg-8 order-4">
         <p><strong>Links:</strong></p>
-        {% if project.link_git %}
+        {% if project.link_git and not access_code %}
         <a class="btn btn-secondary mb-4 me-2"  href="{{project.link_git}}">Github</a>
+        {% elif project.link_git and access_code %}
+        <a class="link mb-4 me-4"  href="{{project.link_git}}">Github</a>
         {% endif %}
-        {% if project.presentation_file %}
+        {% if project.presentation_file and not access_code %}
         <a class="btn btn-secondary mb-4 me-4"  href="{{project.presentation_file.url}}">PowerPoint</a>
+        {% elif project.presentation_file and access_code %}
+        <a class="link mb-4 me-4"  href="{{project.presentation_file.url}}">PowerPoint</a>
         {% endif %}
-        {% if project.documents %}
+        {% if project.documents and not access_code %}
         <a class="btn btn-secondary mb-4 me-4"  href="{{project.documents.url}}">Documents</a>
+        {% elif project.documents and access_code %}
+        <a class="link mb-4 me-4"  href="{{project.documents.url}}">Documents</a>
         {% endif %}
     </div>
 </main>

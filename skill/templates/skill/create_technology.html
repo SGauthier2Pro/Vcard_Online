@@ -17,6 +17,10 @@
             <div class="ms-4 mb-3 p-2">
                 {{ technology_form.level}}
             </div>
+            <label class="ms-3" for="{{ technology_form.level.id }}">icone</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ technology_form.image}}
+            </div>
             {% include 'skill/partials/validation_buttons_snippet.html' with word='Envoyer' %}
         </form>
     </div>

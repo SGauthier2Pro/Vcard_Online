@@ -1,0 +1,28 @@
+<div class="text-center">
+        <h2>Projects</h2>
+</div>
+
+<div id="projectCarousel" class="carousel slide" data-bs-interval="false">
+    <ol class="carousel-indicators">
+        {% for instance in projects %}
+        <li data-bs-target="#projectCarousel" data-bs-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner m-auto border border-secondary">
+
+        {% for instance in projects %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %} ">
+            <section class="proj-prev w-100" onclick="location.href='{% url 'portfolio:display_project' instance.id access_code %}'">
+                {% include 'portfolio/partials/project_minus_snippet.html' with project=instance %}
+            </section>
+        </div>
+        {% endfor %}
+
+    </div>
+    <a class="carousel-control-prev" href="#projectCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#projectCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>

@@ -27,6 +27,7 @@ class ProjectForm(forms.ModelForm):
             'presentation_file',
             'image',
             'documents',
+            'can_be_display'
         ]
 
     def __init__(self, user, *args, **kwargs):
@@ -35,9 +36,13 @@ class ProjectForm(forms.ModelForm):
             queryset=Technology.objects.filter(user=user),
             widget=forms.CheckboxSelectMultiple
         )
-        self.fields['softskills']=forms.ModelMultipleChoiceField(
+        self.fields['softskills'] = forms.ModelMultipleChoiceField(
             queryset=SoftSkill.objects.filter(user=user),
             widget=forms.CheckboxSelectMultiple
+        )
+        self.fields['can_be_display'] = forms.BooleanField(
+            widget=forms.CheckboxInput,
+            required=False
         )
 
 

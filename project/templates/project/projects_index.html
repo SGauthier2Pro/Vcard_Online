@@ -1,41 +1,19 @@
 {% extends 'index.html' %}
+{% block sidebar %}
+{% endblock sidebar %}
 {% block content %}
 <div class="text-center">
         <h2>Projects</h2>
 </div>
+<main class="project-grid">
 
-    <div id="projectCarousel" class="carousel slide" data-bs-interval="false">
-        <div class="carousel-inner m-auto border border-secondary">
+    <div class="project-list">
 
-            {% for instance in projects %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %} ">
-                {% if access_code %}
-                    <section class="proj-prev w-100" onclick="location.href='{% url 'project:invited_display_project' instance.id access_code %}'">
-                {% else %}
-                    <section class="proj-prev w-100" onclick="location.href='{% url 'project:display_project' instance.id %}'">
-                {% endif %}
-                    {% include 'project/partials/project_minus_snippet.html' with project=instance %}
-                </section>
-                {% if user.is_authenticated %}
-                <div class="text-end col-sm-7">
-                    <a class="btn btn-secondary mt-2 mb-4 me-4" href="{% url 'project:edit_project' instance.id %}">
-                        🖉
-                    </a>
-                    <a class="btn btn-secondary mt-2 mb-4 me-4" href="{% url 'project:delete_project' instance.id %}">
-                        X
-                    </a>
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-
+        {% for instance in projects %}
+        <div class="proj-prev border border-secondary" onclick="location.href='{% url 'project:display_project' instance.id %}'">
+            {% include 'project/partials/project_minus_snippet.html' with project=instance %}
         </div>
-        <a class="carousel-control-prev" href="#projectCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </a>
-        <a class="carousel-control-next" href="#projectCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </a>
+        {% endfor %}
     </div>
     {% if user.is_authenticated %}
     <div class="text-end">
@@ -44,4 +22,5 @@
             </a>
     </div>
     {% endif %}
+</main>
 {% endblock content %}

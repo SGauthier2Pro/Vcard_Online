@@ -22,7 +22,7 @@ def index(request):
 def create_technology(request):
     technology_form = technologyform.TechnologyForm()
     if request.method == 'POST':
-        technology_form = technologyform.TechnologyForm(request.POST)
+        technology_form = technologyform.TechnologyForm(request.POST, request.FILES)
         if technology_form.is_valid():
             technology_to_save = technology_form.save(commit=False)
             technology_to_save.user = request.user
@@ -41,6 +41,7 @@ def edit_technology(request, technology_id):
     edit_form = technologyform.TechnologyForm(instance=technology)
     if request.method == 'POST':
         edit_form = technologyform.TechnologyForm(request.POST,
+                                                  request.FILES,
                                                   instance=technology)
         if edit_form.is_valid():
             edit_form.save()

@@ -22,9 +22,11 @@
                 <img src="{% static 'img/email_by_those_icons_white.png' %}" width="20" height="20">
                 {{ user.email }}<br>
                 <img src="{% static 'img/logo-linkedin_by_google_white.png' %}" width="20" height="20">
-                <a href="{{ user.linkedin_url }}" >{{ user.linkedin_url }}</a>
+                <a href="{{ user.linkedin_url }}" >{{ user.linkedin_url }}</a><br>
+                <img src="{% static 'img/github_logo_white.png' %}" width="20" height="20">
+                <a href="{{ user.git_url }}" >{{ user.git_url }}</a>
                 <br>
-                {% if use.is_authenticated %}
+                {% if user.is_authenticated %}
                 Code d'accès invité : {{user.guest_access_code}}
                 {% endif %}
             </div>

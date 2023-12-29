@@ -82,7 +82,14 @@ class CustomUser(AbstractUser):
         null=True,
         verbose_name='Country'
     )
+
     linkedin_url = models.URLField(
+        max_length=200,
+        blank=True,
+        null=True
+    )
+
+    git_url = models.URLField(
         max_length=200,
         blank=True,
         null=True

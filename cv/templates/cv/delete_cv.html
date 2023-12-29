@@ -3,7 +3,7 @@
     {% include 'cv/partials/cv_menu_snippet.html' %}
 {% endblock sidebar %}
 {% block content %}
-    {% if project.user == request.user %}
+    {% if cv.user == request.user %}
         <h2 class="text-center mb-4">Supprimer votre Cv ?</h2>
         <div class="review border border-secondary m-4 p-2">
             {% include 'cv/partials/cv_minus_snippet.html' with cv_id=cv %}

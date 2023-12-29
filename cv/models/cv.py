@@ -45,8 +45,11 @@ class Cv(models.Model):
 
     can_be_display = models.BooleanField(
         verbose_name="can be display",
-        default=False
+        default=False,
+        null=True,
+        blank=True
     )
 
     def __str__(self):
         return self.title
+

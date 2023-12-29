@@ -15,7 +15,8 @@ class TechnologyForm(forms.ModelForm):
         model = Technology
         fields = [
             'title',
-            'level'
+            'level',
+            'image'
         ]
 
 

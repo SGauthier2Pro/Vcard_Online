@@ -27,10 +27,10 @@ def contact(request, access_code):
                 )
 
                 return HttpResponseRedirect(
-                    'index')
+                    'portfolio:portfolio')
 
             return render(request,
-                          'cv/contact.html',
+                          'portfolio/contact.html',
                           context={'cv': cv,
                                    'access_code': access_code,
                                    'inviter': user_inviter}

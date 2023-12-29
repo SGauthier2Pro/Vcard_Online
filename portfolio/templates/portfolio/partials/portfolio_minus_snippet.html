@@ -1,0 +1,15 @@
+{% load static %}
+    <div class="cv-prev__image">
+        {% if portfolio.is_visible %}
+            <img src="{% static 'img/VcardOnline_logo_white.png' %}">
+        {% else %}
+        <a href="{% url 'portfolio:set_portfolio_visible' portfolio_id=portfolio.id %}">
+            <img src="{% static 'img/VcardOnline_logo.png' %}">
+        </a>
+        {% endif %}
+    </div>
+    <div class="cv-prev__heading">
+        <h3>
+            {{ portfolio.title }}
+        </h3>
+    </div>

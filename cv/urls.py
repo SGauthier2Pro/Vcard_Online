@@ -1,13 +1,12 @@
 from django.urls import path
 
-from cv.views import cv_views, hobbies_views, formation_views, experience_views, about_views, contact_views
+from cv.views import cv_views, hobbies_views, formation_views, experience_views
 
 app_name = 'cv'
 
 urlpatterns = [
     path('', cv_views.index, name='cv_home'),
-    path('about/<str:access_code>/', about_views.about, name='about'),
-    path('contact/<str:access_code>/', contact_views.contact, name='contact'),
+    path('test/<int:cv_id>/', cv_views.make_cv_displayable, name='make_cv_displayable'),
     path('<int:cv_id>/', cv_views.show_cv, name='display_cv'),
     path('<int:cv_id>/print_CV/', cv_views.print_cv, name='print_cv'),
     path('<int:cv_id>/edit/', cv_views.edit_cv, name='edit_cv'),

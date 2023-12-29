@@ -65,7 +65,7 @@ def show_project(request, project_id):
                       })
 
 
-def show_project_invited(request, project_id, access_code):
+"""def show_project_invited(request, project_id, access_code):
     if CustomUser.objects.filter(guest_access_code=access_code):
         user_inviter = CustomUser.objects.get(guest_access_code=access_code)
         user_inviter.reset_guest_access_code()
@@ -91,7 +91,7 @@ def show_project_invited(request, project_id, access_code):
                       context={
                           'message': "Le code invité n'est pas valide !"
                       })
-
+"""
 
 @login_required
 def create_project(request):

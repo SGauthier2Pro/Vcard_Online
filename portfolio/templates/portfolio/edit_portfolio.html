@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% if portfolio.user == request.user %}
+        <h2 class="text-center mb-4">Modifier votre Portfolio</h2>
+
+        <div class="d-block p-2">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.edit_portfolio }}
+                 <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.title}}
+            </div>
+            <label class="ms-3" for="{{ edit_form.description.id }}">Phrase de Bienvenu</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.welcome_sentence}}
+            </div>
+            <label class="ms-3" for="{{ edit_form.date_started.id }}">Texte d'introduction</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.introduction_text}}
+            </div>
+            <label class="ms-3" for="{{ edit_form.can_be_display.id }}">Publier sur Portfolio ?</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.is_visible}}
+            </div>
+            {% include 'portfolio/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+            </form>
+        </div>
+    {% else %}
+        {% include 'portfolio/access_denied.html' %}
+    {% endif %}
+{% endblock content %}

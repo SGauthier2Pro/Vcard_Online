@@ -14,6 +14,12 @@
     }
 }
 
+@mixin tablet-and-more {
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
 @mixin strong($colour:$colour-btn-background-hover ) {
     color: $colour;
     font-weight: 900;

@@ -2,9 +2,9 @@
 
 .cv-prev {
   display: flex;
-  color: $colour-black;
+  color: $colour-white;
   margin-bottom: 1.5rem;
-  border: 0.1rem solid $colour-white;
+  border: 0.1rem solid $colour-btn-background-hover;
   &__image {
     margin: 1;
     opacity: 1;

@@ -1,0 +1,29 @@
+<svg width="430" height="234" viewBox="0 0 430 234" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        path {
+            stroke-dasharray: 660;
+            animation: 0.7s fillSvg linear;
+        }
+        @keyframes fillSvg {
+            0% {
+                stroke-dashoffset: 660;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+
+    <path d="M430 2H2V234" stroke="url(#paint0_linear_1_3)" stroke-width="4" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_1_3" x1="430" y1="2" x2="367.845" y2="296.069" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CDCBCB"/>
+<stop offset="0.00273882" stop-color="#CDCBCB" stop-opacity="0.27"/>
+<stop offset="0.0910422" stop-color="#CDCBCB"/>
+<stop offset="0.1835" stop-color="#CDCBCB" stop-opacity="0.4"/>
+<stop offset="0.369343" stop-color="#CDCBCB"/>
+<stop offset="0.723958" stop-color="#CDCBCB" stop-opacity="0.58"/>
+<stop offset="1" stop-color="#CDCBCB" stop-opacity="0.26"/>
+</linearGradient>
+</defs>
+</svg>

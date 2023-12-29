@@ -10,3 +10,11 @@ body {
   font-weight: 300;
   line-height: 1.7;
 }
+.link {
+    color: $color-btn-hover;
+    text-decoration: none;
+    &:hover {
+      color: $colour-white;
+      text-shadow: #d5e3eb 1px 0 10px;
+    }
+}

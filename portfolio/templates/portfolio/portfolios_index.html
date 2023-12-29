@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="text-center">
+    <h2>Portfolio Manager</h2>
+</div>
+<main class="cv-grid">
+
+        <div class="cv-list">
+            {% for portfolio in portfolios %}
+            <div class="cv-prev">
+                {% include 'portfolio/partials/portfolio_minus_snippet.html' with portfolio=portfolio %}
+
+                <div class="cv-prev__button">
+                    <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'portfolio:edit_portfolio' portfolio.id %}">
+                        🖉
+                    </a>
+                    <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'portfolio:delete_portfolio' portfolio.id %}">
+                        X
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-end">
+            <a class="btn btn--full-width btn-secondary mt-2 mb-2 me-4" href="{% url 'portfolio:create_portfolio' %}">
+                Ajouter...
+            </a>
+        </div>
+</main>
+
+{% endblock content %}

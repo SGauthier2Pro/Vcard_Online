@@ -1,0 +1,8 @@
+{% load static %}
+<ul>
+    <li class="nav-item"> <a class="nav-link" href="{% url 'portfolio:portfolio' access_code=access_code %}#top">
+        <img src="{% static 'img/VcardOnline_logo_white.png' %}"></a> </li>
+    <li class="nav-item active"> <a class="nav-link" href="{% url 'portfolio:portfolio' access_code=access_code %}#projects">Projects</a> </li>
+    <li class="nav-item"> <a class="nav-link" href="{% url 'portfolio:portfolio' access_code=access_code %}#about">About</a> </li>
+    <li class="nav-item"> <a class="nav-link" href="{% url 'portfolio:contact' access_code=access_code %}">Contact</a> </li>
+</ul>
