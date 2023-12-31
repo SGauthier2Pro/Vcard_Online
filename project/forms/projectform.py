@@ -29,6 +29,12 @@ class ProjectForm(forms.ModelForm):
             'documents',
             'can_be_display'
         ]
+        widgets = {
+            'date_started': forms.DateInput(format='%Y-%m-%d',
+                                            attrs={'type': 'date'}),
+            'date_end': forms.DateInput(format='%Y-%m-%d',
+                                        attrs={'type': 'date'}),
+        }
 
     def __init__(self, user, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)

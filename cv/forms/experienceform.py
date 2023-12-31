@@ -21,6 +21,12 @@ class ExperienceForm(forms.ModelForm):
             'date_end',
             'tasks',
         ]
+        widgets = {
+            'date_started': forms.DateInput(format='%Y-%m-%d',
+                                            attrs={'type': 'date'}),
+            'date_end': forms.DateInput(format='%Y-%m-%d',
+                                        attrs={'type': 'date'}),
+        }
 
 
 class DeleteExperienceForm(forms.Form):

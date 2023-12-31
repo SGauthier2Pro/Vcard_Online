@@ -29,3 +29,7 @@ class ProfileForm(forms.ModelForm):
                   'git_url',
                   'profile_photo',
                   ]
+        widgets = {
+            'birth_date': forms.DateInput(format='%Y-%m-%d',
+                                          attrs={'type': 'date'})
+        }

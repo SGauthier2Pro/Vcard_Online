@@ -22,6 +22,12 @@ class FormationForm(forms.ModelForm):
             'rncp_level',
             'certificate_picture'
         ]
+        widgets = {
+            'date_started': forms.DateInput(format='%Y-%m-%d',
+                                            attrs={'type': 'date'}),
+            'date_end': forms.DateInput(format='%Y-%m-%d',
+                                        attrs={'type': 'date'}),
+        }
 
 
 class DeleteFormationForm(forms.Form):
