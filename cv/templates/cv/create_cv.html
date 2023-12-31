@@ -5,41 +5,91 @@
 {% block content %}
     <h2 class="text-center mb-4">Ajouter un CV</h2>
 
-    <div class="d-flex flex-column mb-4 col-sm-6">
+    <div class="row">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ cv_form.edit_cv }}
-            <label class="ms-3" for="{{ cv_form.title.id }}">Intitulé du Poste / Stage</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.title}}
-            </div>
-            <label class="ms-3" for="{{ cv_form.profil.id }}"> Descritpif du Profil</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.profil}}
+            <div class="row">
+                <div class="col-sm">
+                    <label class="ms-3" for="{{ cv_form.title.id }}">Intitulé du Poste / Stage</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ cv_form.title}}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label class="ms-3" for="{{ cv_form.profil.id }}"> Descritpif du Profil</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ cv_form.profil}}
+                    </div>
+                </div>
             </div>
             <label class="ms-3" for="{{ cv_form.experiences.id }}">Expériences à inclure</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.experiences}}
+            <div class="skills-list ms-4 mb-3 p-2">
+                 <div class="row">
+                    {% for experience in cv_form.experiences %}
+                        {% if forloop.counter0|divisibleby:experiences_divider %}
+                            <div class="col-sm">
+                                <ul>
+                        {% endif %}
+                                    <li>{{ experience.tag}} {{ experience.choice_label }}</li>
+                        {% if forloop.counter|divisibleby:experiences_divider or forloop.last %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
             <label class="ms-3" for="{{ cv_form.softskills.id }}">Compétences à mettre en avant</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.softskills}}
+            <div class="skills-list ms-4 mb-3 p-2">
+                <div class="row">
+                {% for softskill in cv_form.softskills %}
+                    {% if forloop.counter0|divisibleby:softskills_divider %}
+                        <div class="col-sm">
+                            <ul>
+                    {% endif %}
+                                <li>{{ softskill.tag}} {{ softskill.choice_label }}</li>
+                    {% if forloop.counter|divisibleby:softskills_divider or forloop.last %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
             </div>
             <label class="ms-3" for="{{ cv_form.technologies.id }}">Technologies à mettre en avant</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.technologies}}
+            <div class="skills-list ms-4 mb-3 p-2">
+                 <div class="row">
+                    {% for technology in cv_form.technologies %}
+                        {% if forloop.counter0|divisibleby:technologies_divider %}
+                            <div class="col-sm">
+                                <ul>
+                        {% endif %}
+                                    <li>{{ technology.tag}} {{ technology.choice_label }}</li>
+                        {% if forloop.counter|divisibleby:technologies_divider or forloop.last %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-            <label class="ms-3" for="{{ cv_form.languages.id }}">Langues Connues</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.languages}}
-            </div>
-            <label class="ms-3" for="{{ cv_form.formations.id }}">Formations et Diplomes</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.formations}}
-            </div>
-            <label class="ms-3" for="{{ cv_form.hobbies.id }}">Centre d'Intérêts</label>
-            <div class="ms-4 mb-3 p-2">
-                {{ cv_form.hobbies}}
+            <div class="row">
+                <div class="col-sm">
+                    <label class="ms-3" for="{{ cv_form.languages.id }}">Langues Connues</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ cv_form.languages}}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label class="ms-3" for="{{ cv_form.formations.id }}">Formations et Diplomes</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ cv_form.formations}}
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label class="ms-3" for="{{ cv_form.hobbies.id }}">Centre d'Intérêts</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ cv_form.hobbies}}
+                    </div>
+                </div>
             </div>
             <label class="ms-3" for="{{ cv_form.can_be_display.id }}">Rendre accessible ?</label>
             <div class="ms-4 mb-3 p-2">

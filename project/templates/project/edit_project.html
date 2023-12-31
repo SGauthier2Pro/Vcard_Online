@@ -3,37 +3,69 @@
     {% if project.user == request.user %}
         <h2 class="text-center mb-4">Modifier votre Projet</h2>
 
-        <div class="d-block p-2">
+        <div class="row">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ edit_form.edit_project }}
-                <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.title}}
-                </div>
-                <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.description}}
-                </div>
-                <label class="ms-3" for="{{ edit_form.date_started.id }}">Date début</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.date_started}}
-                </div>
-                <label class="ms-3" for="{{ edit_form.date_end.id }}">Date fin</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.date_end}}
-                </div>
-                <label class="ms-3" for="{{ edit_form.tasks.id }}">Tâches</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.tasks}}
+                <div class="row">
+                    <div class="col-sm">
+                        <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
+                        <div class="ms-4 mb-3 p-2">
+                            {{ edit_form.title}}
+                        </div>
+                        <label class="ms-3" for="{{ edit_form.date_started.id }}">Date début</label>
+                        <div class="ms-4 mb-3 p-2">
+                            {{ edit_form.date_started}}
+                        </div>
+                        <label class="ms-3" for="{{ edit_form.date_end.id }}">Date fin</label>
+                        <div class="ms-4 mb-3 p-2">
+                            {{ edit_form.date_end}}
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
+                        <div class="ms-4 mb-3 p-2">
+                            {{ edit_form.description}}
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <label class="ms-3" for="{{ edit_form.tasks.id }}">Tâches</label>
+                        <div class="ms-4 mb-3 p-2">
+                            {{ edit_form.tasks}}
+                        </div>
+                    </div>
                 </div>
                 <label class="ms-3" for="{{ edit_form.technologies.id }}">Technologies</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.technologies}}
+                <div class="skills-list ms-4 mb-3 p-2">
+                    <div class="row">
+                    {% for technology in edit_form.technologies %}
+                        {% if forloop.counter0|divisibleby:technologies_divider %}
+                            <div class="col-sm">
+                                <ul>
+                        {% endif %}
+                                    <li>{{ technology.tag}} {{ technology.choice_label }}</li>
+                        {% if forloop.counter|divisibleby:technologies_divider or forloop.last %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
                 </div>
                 <label class="ms-3" for="{{ edit_form.softskills.id }}">Softskills</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.softskills}}
+                <div class="skills-list ms-4 mb-3 p-2">
+                    <div class="row">
+                    {% for softskill in edit_form.softskills %}
+                        {% if forloop.counter0|divisibleby:softskills_divider %}
+                            <div class="col-sm">
+                                <ul>
+                        {% endif %}
+                                    <li>{{ softskill.tag}} {{ softskill.choice_label }}</li>
+                        {% if forloop.counter|divisibleby:softskills_divider or forloop.last %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
                 </div>
                 <label class="ms-3" for="{{ edit_form.link_git.id }}">Lien Github</label>
                 <div class="ms-4 mb-3 p-2">

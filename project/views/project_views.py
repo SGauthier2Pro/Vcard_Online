@@ -5,7 +5,8 @@ from django.db.models import Q
 from project.models.project import Project
 from project.forms import projectform
 from users.models.customuser import CustomUser
-
+from skill.models.technology import Technology
+from skill.models.softskill import SoftSkill
 
 @login_required
 def index(request):
@@ -46,6 +47,7 @@ def index_invited(request, access_code):
                       context={
                           'message': "Le code invité que vous utilisez n'est pas valide !"
                       })
+
 
 @login_required
 def show_project(request, project_id):
@@ -95,6 +97,8 @@ def show_project(request, project_id):
 
 @login_required
 def create_project(request):
+    technologies_divider = int(Technology.objects.filter(user=request.user).count() / 4) + 1
+    softskills_divider = int(SoftSkill.objects.filter(user=request.user).count() / 4) + 1
     project_form = projectform.ProjectForm(request.user)
     if request.method == 'POST':
         project_form = projectform.ProjectForm(request.user, request.POST, request.FILES)
@@ -106,12 +110,18 @@ def create_project(request):
             return redirect('project:project_home')
     return render(request,
                   'project/create_project.html',
-                  context={'project_form': project_form}
+                  context={
+                      'project_form': project_form,
+                      'softskills_divider': softskills_divider,
+                      'technologies_divider': technologies_divider
+                  }
                   )
 
 
 @login_required
 def edit_project(request, project_id):
+    technologies_divider = int(Technology.objects.filter(user=request.user).count() / 4) + 1
+    softskills_divider = int(SoftSkill.objects.filter(user=request.user).count() / 4) + 1
     project = get_object_or_404(Project,
                                 id=project_id)
     edit_form = projectform.ProjectForm(user=request.user, instance=project)
@@ -126,6 +136,8 @@ def edit_project(request, project_id):
     context = {
         'project': project,
         'edit_form': edit_form,
+        'softskills_divider': softskills_divider,
+        'technologies_divider': technologies_divider
     }
     return render(request,
                   'project/edit_project.html',

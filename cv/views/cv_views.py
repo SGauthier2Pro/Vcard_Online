@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.template import RequestContext
 
 from users.models.customuser import CustomUser
+from cv.models.experience import Experience
+from skill.models.technology import Technology
+from skill.models.softskill import SoftSkill
 
 from cv.models.cv import Cv
 from cv.forms import cvform
@@ -56,6 +58,9 @@ def show_cv(request, cv_id):
 
 @login_required
 def create_cv(request):
+    experiences_divider = int(Experience.objects.filter(user=request.user).count() / 4) + 1
+    technologies_divider = int(Technology.objects.filter(user=request.user).count() / 4) + 1
+    softskills_divider = int(SoftSkill.objects.filter(user=request.user).count() / 4) + 1
     cv_form = cvform.CvForm(request.user)
     if request.method == 'POST':
         cv_form = cvform.CvForm(request.user, request.POST)
@@ -67,12 +72,20 @@ def create_cv(request):
             return redirect('cv:cv_home')
     return render(request,
                   'cv/create_cv.html',
-                  context={'cv_form': cv_form}
+                  context={
+                      'cv_form': cv_form,
+                      'experiences_divider': experiences_divider,
+                      'softskills_divider': softskills_divider,
+                      'technologies_divider': technologies_divider
+                  }
                   )
 
 
 @login_required
 def edit_cv(request, cv_id):
+    experiences_divider = int(Experience.objects.filter(user=request.user).count() / 4) + 1
+    technologies_divider = int(Technology.objects.filter(user=request.user).count() / 4) + 1
+    softskills_divider = int(SoftSkill.objects.filter(user=request.user).count() / 4) + 1
     cv = get_object_or_404(Cv,
                            id=cv_id)
     edit_form = cvform.CvForm(user=request.user, instance=cv)
@@ -86,6 +99,9 @@ def edit_cv(request, cv_id):
     context = {
         'cv': cv,
         'edit_form': edit_form,
+        'experiences_divider': experiences_divider,
+        'softskills_divider': softskills_divider,
+        'technologies_divider': technologies_divider
     }
     return render(request,
                   'cv/edit_cv.html',

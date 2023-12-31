@@ -1,12 +1,19 @@
 from django.contrib.auth import get_user_model
 from django import forms
+from users.models.customuser import CustomUser
 
 
 class ProfileForm(forms.ModelForm):
+    def __str__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""  # Remove: as label suffix
+
+    edit_profile = forms.BooleanField(widget=forms.HiddenInput,
+                                      initial=True)
 
     class Meta:
-        model = get_user_model()
-        fields = ('first_name',
+        model = CustomUser
+        fields = ['first_name',
                   'last_name',
                   'email',
                   'phone',
@@ -18,8 +25,7 @@ class ProfileForm(forms.ModelForm):
                   'state',
                   'zip_code',
                   'country',
-                  'guest_access_code',
                   'linkedin_url',
                   'git_url',
                   'profile_photo',
-                  )
+                  ]

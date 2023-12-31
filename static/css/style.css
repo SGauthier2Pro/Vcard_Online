@@ -932,6 +932,10 @@ button {
   font-style: italic;
 }
 
+.skills-list ul {
+  list-style: none;
+}
+
 /* quote */
 .quote {
   justify-content: center;

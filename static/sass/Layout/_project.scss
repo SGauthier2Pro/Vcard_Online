@@ -68,3 +68,9 @@
     }
   }
 }
+
+.skills-list {
+   & ul {
+    list-style: none;
+   }
+}
