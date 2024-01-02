@@ -32,6 +32,9 @@ class CvForm(forms.ModelForm):
             'formations',
             'can_be_display'
         ]
+        widgets = {
+            'title': forms.TextInput(attrs={'size': 50})
+        }
 
     def __init__(self, user, *args, **kwargs):
         super(CvForm, self).__init__(*args, **kwargs)

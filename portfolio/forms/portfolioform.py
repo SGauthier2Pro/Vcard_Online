@@ -20,6 +20,9 @@ class PortfolioForm(forms.ModelForm):
             'introduction_text',
             'is_visible'
         ]
+        widgets = {
+            'title': forms.TextInput(attrs={'size': 50})
+        }
 
     def __init__(self, user, *args, **kwargs):
         super(PortfolioForm, self).__init__(*args, **kwargs)

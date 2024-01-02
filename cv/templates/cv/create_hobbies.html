@@ -8,7 +8,7 @@
 
 
     <div class="d-flex flex-column mb-4 col-sm-6">
-        <form method="post" enctype="multipart/form-data">
+        <form class="form__field" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ hobbies_form.edit_hobbies }}
             <label class="ms-3" for="{{ hobbies_form.title.id }}">Titre</label>

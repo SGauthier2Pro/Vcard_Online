@@ -30,6 +30,8 @@ class ProjectForm(forms.ModelForm):
             'can_be_display'
         ]
         widgets = {
+            'title': forms.TextInput(attrs={'size': 40}),
+            'link_git': forms.TextInput(attrs={'size': 55}),
             'date_started': forms.DateInput(format='%Y-%m-%d',
                                             attrs={'type': 'date'}),
             'date_end': forms.DateInput(format='%Y-%m-%d',

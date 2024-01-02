@@ -6,7 +6,7 @@
     <h2 class="text-center mb-4">Ajouter une Langue</h2>
 
     <div class="d-flex flex-column mb-4">
-        <form method="post" enctype="multipart/form-data">
+        <form class="form__field" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ language_form.edit_language }}
             <label class="ms-3" for="{{ language_form.title.id }}">Titre</label>

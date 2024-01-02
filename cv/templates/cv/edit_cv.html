@@ -7,7 +7,7 @@
         <h2 class="text-center mb-4">Modifier votre Cv</h2>
 
         <div class="d-block p-2">
-            <form method="post" enctype="multipart/form-data">
+            <form class="form__field" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ edit_form.edit_cv }}
                 <div class="row">
@@ -96,7 +96,7 @@
                 <div class="ms-4 mb-3 p-2">
                     {{ edit_form.can_be_display}}
                 </div>
-                {% include 'project/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+                {% include 'cv/partials/validation_buttons_snippet.html' with word='Envoyer' %}
             </form>
         </div>
     {% else %}

@@ -4,7 +4,7 @@
         <h2 class="text-center mb-4">Modifier votre Projet</h2>
 
         <div class="row">
-            <form method="post" enctype="multipart/form-data">
+            <form class="form__field" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ edit_form.edit_project }}
                 <div class="row">

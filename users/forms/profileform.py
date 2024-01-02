@@ -31,5 +31,11 @@ class ProfileForm(forms.ModelForm):
                   ]
         widgets = {
             'birth_date': forms.DateInput(format='%Y-%m-%d',
-                                          attrs={'type': 'date'})
+                                          attrs={'type': 'date'}),
+            'number': forms.TextInput(attrs={'size': 5}),
+            'street': forms.TextInput(attrs={'size': 40}),
+            'zip_code': forms.TextInput(attrs={'size': 10}),
+            'email': forms.TextInput(attrs={'size': 30}),
+            'linkedin_url': forms.TextInput(attrs={'size': 50}),
+            'git_url': forms.TextInput(attrs={'size': 50})
         }

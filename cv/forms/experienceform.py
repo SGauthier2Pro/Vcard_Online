@@ -22,6 +22,9 @@ class ExperienceForm(forms.ModelForm):
             'tasks',
         ]
         widgets = {
+            'title': forms.TextInput(attrs={'size': 40}),
+            'company_name': forms.TextInput(attrs={'size': 40}),
+            'location': forms.TextInput(attrs={'size': 40}),
             'date_started': forms.DateInput(format='%Y-%m-%d',
                                             attrs={'type': 'date'}),
             'date_end': forms.DateInput(format='%Y-%m-%d',

@@ -7,7 +7,7 @@
         <h2 class="text-center mb-4">Modifier votre technology</h2>
 
         <div class="d-block p-2">
-            <form method="post" enctype="multipart/form-data">
+            <form class="form__field" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ edit_form.edit_technology }}
                 <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>

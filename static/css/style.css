@@ -385,7 +385,7 @@ header img {
 
 .header__logo {
   font-size: 4rem;
-  color: #001534;
+  color: #3c4754;
 }
 @media screen and (min-width: 576px) and (max-width: 1200px) {
   .header__logo {
@@ -439,11 +439,11 @@ header img {
   text-shadow: #d5e3eb 1px 0 10px;
 }
 .nav-item .active {
-  color: #001534;
+  color: #3c4754;
 }
 .nav-item .active:hover {
   cursor: default;
-  color: #001534;
+  color: #3c4754;
 }
 
 /*portfolio */
@@ -547,29 +547,37 @@ header img {
   color: colour-btn-background-hover;
   display: block;
   font-size: 2rem;
+  font-weight: bold;
   line-height: 2rem;
   padding-top: 1.5rem;
 }
-.form__field input:active {
+.form__field input, .form__field select {
+  border-radius: 10px;
+  padding-left: 4px;
+}
+.form__field input:active, .form__field select:active {
+  border: 0.1rem solid colour-btn-background-hover;
+  border-radius: 10px;
+  background-color: colour-btn-background-hover;
+  color: #3c4754;
+}
+.form__field input:focus, .form__field select:focus {
   border: 0.1rem solid colour-btn-background-hover;
   background-color: colour-btn-background-hover;
-  color: #001534;
+  color: #3c4754;
 }
-.form__field input:focus {
-  border: 0.1rem solid colour-btn-background-hover;
-  background-color: colour-btn-background-hover;
-  color: #001534;
-}
-.form__field input:invalid {
+.form__field input:invalid, .form__field select:invalid {
   border: 0.1rem solid #fff;
   background-color: #fff;
-  color: #001534;
+  color: #3c4754;
 }
 .form__field textarea {
   width: 100%;
-  color: #15DEA5;
-  background: #001534;
-  border: 0.1rem solid #15DEA5;
+  color: #000000;
+  font-weight: bold;
+  background: #fff;
+  border: 0.1rem solid #3c4754;
+  border-radius: 10px;
   outline: none;
   padding: 1.5rem;
   margin-bottom: 0.75rem;

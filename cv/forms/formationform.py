@@ -23,6 +23,9 @@ class FormationForm(forms.ModelForm):
             'certificate_picture'
         ]
         widgets = {
+            'title': forms.TextInput(attrs={'size': 45}),
+            'school_name': forms.TextInput(attrs={'size': 45}),
+            'location': forms.TextInput(attrs={'size': 45}),
             'date_started': forms.DateInput(format='%Y-%m-%d',
                                             attrs={'type': 'date'}),
             'date_end': forms.DateInput(format='%Y-%m-%d',

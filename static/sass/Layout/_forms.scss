@@ -15,12 +15,16 @@
       color: colour-btn-background-hover;
       display: block;
       font-size: 2rem;
+      font-weight: bold;
       line-height: 2rem;
       padding-top: 1.5rem;
     }
-    & input {
+    & input, select {
+      border-radius: 10px;
+      padding-left: 4px;
       &:active {
         border: 0.1rem solid colour-btn-background-hover;
+        border-radius: 10px;
         background-color: colour-btn-background-hover;
         color: $colour-nav-active;
       }
@@ -37,9 +41,11 @@
     }
     & textarea {
       width: 100%;
-      color: $colour-btn-background-hover;
-      background: $colour-nav-active;
-      border: 0.1rem solid $colour-btn-background-hover;
+      color: $colour-black;
+      font-weight: bold;
+      background: $colour-white;
+      border: 0.1rem solid $colour-nav-active;
+      border-radius: 10px;
       outline: none;
       padding: 1.5rem;
       margin-bottom: 0.75rem;
