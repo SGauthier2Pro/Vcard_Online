@@ -1,0 +1,6 @@
+[
+  "vcardonline/tests/test_urls.py::TestVPCardOnlineUrls::test_access_code_url",
+  "vcardonline/tests/test_urls.py::TestVPCardOnlineUrls::test_vpcardonline_index_url",
+  "vcardonline/tests/test_views.py::TestIndexView::test_access_index_with_authenticated_user",
+  "vcardonline/tests/test_views.py::TestIndexView::test_access_index_with_unauthenticated_user_and_no_access_code"
+]
