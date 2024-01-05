@@ -15,16 +15,21 @@ class CustomUser(AbstractUser):
     first_name = models.CharField(
         max_length=25,
         verbose_name='First name',
-        blank=True
+        blank=False,
+        null=False
     )
     last_name = models.CharField(
         max_length=25,
-        verbose_name='Last name'
+        verbose_name='Last name',
+        blank=False,
+        null=False
     )
     email = models.EmailField(
         max_length=100,
         verbose_name='Email',
-        unique=True
+        unique=True,
+        blank=False,
+        null=False
     )
     phone_number_regex = RegexValidator(
         regex='(0|\\+33|0033)[1-9][0-9]{8}'
